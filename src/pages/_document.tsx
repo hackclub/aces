@@ -1,31 +1,17 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import { Outfit } from "next/font/google"
-import Flag from "@/components/Flag";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Meta from "@/components/Meta";
+import {Head, Main, NextScript} from "next/document";
+import React from "react";
 
 
-const outfit = Outfit({
-	subsets: ["latin"]
-})
-
-export default function RootLayout({
-	                                   children,
-                                   }: Readonly<{
-	children: React.ReactNode;
-}>) {
+export default function Document() {
 	return (
 		<html className="scroll-smooth" lang="en">
-			<head>
+			<Head>
 				<Meta/>
-			</head>
-			<body className={`${outfit.className}`}>
-				<Flag />
-					<Navbar />
-					{children}
-				<Footer />
+			</Head>
+			<body>
+			<Main />
+			<NextScript />
 			</body>
 		</html>
 	);
