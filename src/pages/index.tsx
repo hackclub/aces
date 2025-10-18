@@ -43,6 +43,11 @@ export default function Home() {
 				  </div>
 			  </div>
 		  </div>
+		  <div className={"bg-red-200"}>
+			  <div className="container mx-auto h-screen flex items-center md:p-0 p-5">
+
+			  </div>
+		  </div>
 	  </>
   );
 }
