@@ -1,11 +1,11 @@
 import Meta from "@/components/Meta";
-import {Head, Main, NextScript} from "next/document";
+import {Head, Html, Main, NextScript} from "next/document";
 import React from "react";
 
 
 export default function Document() {
 	return (
-		<html className="scroll-smooth" lang="en">
+		<Html className="scroll-smooth" lang="en">
 			<Head>
 				<Meta/>
 			</Head>
@@ -13,6 +13,6 @@ export default function Document() {
 			<Main />
 			<NextScript />
 			</body>
-		</html>
+		</Html>
 	);
 }

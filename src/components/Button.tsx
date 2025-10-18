@@ -1,7 +1,7 @@
 import clsx from "clsx";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  color: "blue" | "white";
+  color: "rose" | "red" | "white";
   invert?: boolean;
   href?: string;
   children: React.ReactNode;
@@ -11,10 +11,14 @@ const baseClasses =
   "text-xl cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5 text-center";
 
 const colorClassMap = {
-  blue: {
-    normal: "text-white bg-indigo-500",
-    invert: "text-indigo-500 bg-white",
+  rose: {
+		normal: "text-white bg-rose-700",
+	  invert: "text-rose-700 bg-white",
   },
+	red: {
+		normal: "text-white bg-red-500",
+		invert: "text-red-500 bg-white",
+	},
   white: {
     normal: "text-black bg-white",
     invert: "text-white bg-black",

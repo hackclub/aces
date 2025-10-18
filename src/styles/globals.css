@@ -1,26 +1,36 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.flag:hover {
+    transform: rotate(0.03turn) scale(1.2) translateY(-4px);
+    transition: transform 0.1s;
 }
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root{
+    --safe-top: env(safe-area-inset-top);
+    --safe-bottom: env(safe-area-inset-bottom);
+    --content-max: 1200px;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,body{height:100%;margin:0;-webkit-font-smoothing:antialiased;}
+body{
+    padding-top: var(--safe-top);
+    padding-bottom: var(--safe-bottom);
+    margin:0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    font-size: clamp(16px, 2.5vw, 18px);
+    line-height:1.45;
+    -webkit-text-size-adjust:100%;
 }
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.container{
+    max-width: var(--content-max);
+    margin:0 auto;
+    padding: 0 16px;
+    box-sizing:border-box;
 }
+img, video, canvas { max-width:100%; height:auto; display:block; }
+a, button { touch-action: manipulation; -webkit-tap-highlight-color: rgba(0,0,0,0); }
+.button, button { min-height:44px; min-width:44px; padding: 10px 16px; border-radius:6px; }
+/* responsive grid example */
+.grid{ display:grid; grid-template-columns: 1fr; gap:16px; }
+@media(min-width:720px){ .grid{ grid-template-columns: repeat(2,1fr); } }
+@media(min-width:1024px){ .grid{ grid-template-columns: repeat(3,1fr); } }
+/* helper for safe-area aware header/footer */
+.header, .footer { padding-top: calc(12px + var(--safe-top)); padding-bottom: calc(12px + var(--safe-bottom)); }
