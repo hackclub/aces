@@ -17,9 +17,9 @@ export default function Navbar() {
 		    <Link href="/#requirements" className="md:text-xl text-md hover:text-gray-300">
 			    Requirements
 		    </Link>
-		    <Link href="/gallery" className="md:text-xl text-md hover:text-gray-300">
+		    <a href="/gallery" className="md:text-xl text-md hover:text-gray-300">
 			    Gallery
-		    </Link>
+		    </a>
 		    <Link href="/#faq" className="md:text-xl text-md hover:text-gray-300">
 			    FAQ
 		    </Link>
