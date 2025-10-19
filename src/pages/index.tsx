@@ -11,6 +11,7 @@ export default function Home() {
 	const [is404, setIs404] = useState<boolean>(false);
 	const [isForbidden, setIsForbidden] = useState<boolean>(false);
 	const [ref, setRef] = useState<string | null>(null);
+	const [isCardOpen, setIsCardOpen] = useState<boolean>(false);
 
 	useEffect(() => {
 		if (!router.isReady) return;
@@ -61,7 +62,46 @@ export default function Home() {
 			  </div>
 		  </div>
 		  <div id={"learn-more"} className="container h-screen flex items-center justify-center p-5">
-			  <h1 className={"text-center self-center"}>learn more</h1>
+			  <div className="relative">
+				  <button
+					  onClick={() => setIsCardOpen(v => !v)}
+					  aria-expanded={isCardOpen}
+					  className="focus:outline-none mx-auto"
+				  >
+					  <Image
+						  src={"/aces_card.svg"}
+						  alt={"Aces Logo"}
+						  width={300}
+						  height={300}
+						  className={`transition-transform duration-300 ${isCardOpen ? 'scale-105 rotate-3 -translate-y-40' : 'scale-100 animate-pulse'}`}
+					  />
+				  </button>
+
+				  <div className={`absolute top-3/4 mt-4 left-1/2 transform -translate-x-1/2 transition-all duration-300 ${isCardOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}>
+					  <div className="bg-white text-black p-4 rounded shadow-lg w-80">
+						  <ul>
+							  <li>
+								  Create a <span className={"text-rose-300 font-extrabold"}> virtual card/board game in 40 hours...</span>
+							  </li>
+							  <li>
+								  Get a grant to <span className={"text-rose-300 font-extrabold"}>make your game for real...</span>
+							  </li>
+							  <li>
+								  And get invited to <span className={"text-rose-300 font-extrabold"}>The Deck</span>, a 48 hour hackathon in Washington DC!
+							  </li>
+						  </ul>
+						</div>
+				  </div>
+
+				  <div className={`absolute left-0 -bottom-50 w-full text-center ${isCardOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}>
+					  <a href="#requirements">
+						  <h2 className="text-white text-xl mb-2">Requirements</h2>
+						  <FaArrowDown className="mx-auto text-white text-xl animate-bounce" />
+					  </a>
+				  </div>
+			  </div>
+
+
 		  </div>
 		  <div id={"requirements"} className="container h-screen flex items-center justify-center p-5">
 			  <h1 className={"text-center self-center"}>req</h1>
