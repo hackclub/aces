@@ -29,11 +29,15 @@ export default function Home() {
 		const isForbidden = "forbidden" in router.query
 		const rawRef = router.query["ref"]
 
-		const ref = rawRef ? rawRef as string : null;
+		var currRef = rawRef ? rawRef as string : null;
+
+		if (currRef && !/^\d+$/.test(currRef)) {
+			currRef = null
+		}
 
 		setIs404(is404)
 		setIsForbidden(isForbidden)
-		setRef(ref)
+		setRef(currRef)
 
 		}, [router.isReady, router.query]
 	)
@@ -60,7 +64,7 @@ export default function Home() {
 				  </p>
 
 				  <div className="flex justify-center gap-x-4">
-					  <Button href={"https://forms.hackclub.com/aces-rsvp" + (ref && `?ref=${ref}`)} color={"rose"}>RSVP</Button>
+					  <Button href={"https://forms.hackclub.com/aces-rsvp" + (ref ? `?ref=${ref}` : "")} color={"rose"}>RSVP</Button>
 					  <Button color={"red"} invert>Submit</Button>
 				  </div>
 			  </div>
