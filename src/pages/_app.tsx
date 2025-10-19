@@ -9,7 +9,7 @@ const outfit = Outfit({
 	subsets: ["latin"]
 })
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({Component, pageProps}: AppProps) {
 	return <div className={`${outfit.className} bg-gradient-to-br from-rose-800 to-red-950`}>
 		<Flag/>
 		<Navbar/>
