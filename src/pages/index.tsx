@@ -125,7 +125,7 @@ export default function Home() {
 						  <strong>≤ 30% AI code</strong>: No more than 30% of the games code can be AI-Written. Write your own code!
 					  </li>
 					  <li>
-						  <strong>Human-written README</strong>: The README must be authored by humans. It's okay if it's not your best writing, but please make it personal!
+						  <strong>Human-written README</strong>: The README must be authored by humans. It&apos;s okay if it&apos;s not your best writing, but please make it personal!
 					  </li>
 					  <li>
 						  <strong>Open source on GitHub</strong>: Project must be public on GitHub (include a clear license).
