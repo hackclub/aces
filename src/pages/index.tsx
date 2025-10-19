@@ -29,7 +29,7 @@ export default function Home() {
 		const isForbidden = "forbidden" in router.query
 		const rawRef = router.query["ref"]
 
-		var currRef = rawRef ? rawRef as string : null;
+		let currRef = rawRef ? rawRef as string : null;
 
 		if (currRef && !/^\d+$/.test(currRef)) {
 			currRef = null
