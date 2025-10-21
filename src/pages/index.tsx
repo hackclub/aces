@@ -83,7 +83,7 @@ export default function Home() {
 						  href={"https://awesome-con.com/"}>AwesomeCon</Link></span> in DC!
 				  </p>`*/}
 				  <p className="md:text-3xl text-lg text-white font-medium mb-5">
-					  Build your own board/card game, get a grant to make it real, and head to DC for AwesomeCon to showcase it, then stay for an in-person hackathon!
+					  Build your own <strong>board/card game</strong>, get a <strong>grant</strong> to make it real, and head to DC for <strong>AwesomeCon</strong> to showcase it, then stay for an in-person <strong>hackathon!</strong>
 					</p>
 
 
