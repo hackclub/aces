@@ -10,10 +10,10 @@ const outfit = Outfit({
 })
 
 export default function App({Component, pageProps}: AppProps) {
-	return <div className={`${outfit.className} bg-gradient-to-br from-rose-800 to-red-950`}>
+	return <div className={`${outfit.className} bg-gradient-to-br from-rose-300 to-red-300`}>
 		<Flag/>
 		<Navbar/>
-		<Component {...pageProps} />
+		<Component id={"main-content"} {...pageProps} />
 		<Footer/>
 	</div>
 }
