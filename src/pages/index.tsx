@@ -144,24 +144,31 @@ export default function Home() {
 				  <ul className="space-y-3">
 					  {faqItems.map((item, i) => (
 						  <li key={i} className="border-b border-white/10 pb-3">
-							  <button
-								  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-								  aria-expanded={openFaq === i}
-								  aria-controls={`faq-${i}`}
-								  className="w-full flex items-center justify-between text-left py-2"
+							  <details
+								  open={openFaq === i}
+								  onToggle={(e) => setOpenFaq(e.currentTarget.open ? i : null)}
+								  className="group"
 							  >
-								  <span className="font-bold">{item.q}</span>
-								  <span
-									  className={`flex flex-col gap-1 w-5 h-5 transition-transform ${openFaq === i ? 'rotate-90' : ''}`}>
-						          <span className="block h-[2px] w-full bg-white"/>
-						          <span className="block h-[2px] w-full bg-white"/>
-						          <span className="block h-[2px] w-full bg-white"/>
-						        </span>
-							  </button>
-							  <div id={`faq-${i}`}
-							       className={`ml-6 mt-2 text-sm transition-all overflow-hidden ${openFaq === i ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-								  <p>{item.a}</p>
-							  </div>
+								  <summary
+									  aria-expanded={openFaq === i}
+									  aria-controls={`faq-${i}`}
+									  className="list-none w-full flex items-center justify-between text-left py-2 cursor-pointer focus:outline-none"
+								  >
+									  <span className="font-bold">{item.q}</span>
+									  <span className={`flex flex-col gap-1 w-5 h-5 transition-transform ${openFaq === i ? 'rotate-90' : ''}`}>
+								      <span className="block h-[2px] w-full bg-white"/>
+								      <span className="block h-[2px] w-full bg-white"/>
+								      <span className="block h-[2px] w-full bg-white"/>
+								     </span>
+								  </summary>
+
+								  <div
+									  id={`faq-${i}`}
+									  className={`ml-6 mt-2 text-sm transition-all overflow-hidden ${openFaq === i ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
+								  >
+									  <p>{item.a}</p>
+								  </div>
+							  </details>
 						  </li>
 					  ))}
 				  </ul>
