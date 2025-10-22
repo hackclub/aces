@@ -8,7 +8,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const baseClasses =
-  "text-xl cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5 text-center";
+  "text-xl font-medium rounded-lg text-sm px-5 py-2.5 text-center";
 
 const colorClassMap = {
   rose: {
@@ -30,15 +30,17 @@ export default function Button({
   invert,
   href,
   children,
+  disabled,
   ...rest
 }: ButtonProps) {
   const variant = invert ? "invert" : "normal";
+  const disabledClasses = disabled ? "cursor-not-allowed" : "cursor-pointer";
   const colorClasses = colorClassMap[color][variant];
 
-  const classes = clsx(baseClasses, colorClasses);
+  const classes = clsx(baseClasses, colorClasses, disabledClasses);
   return (
     <a href={href}>
-      <button type="button" className={classes} {...rest}>
+      <button className={classes} disabled={disabled} {...rest}>
         {children}
       </button>
     </a>
