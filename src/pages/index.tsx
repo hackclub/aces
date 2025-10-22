@@ -124,7 +124,7 @@ export default function Home() {
 		        {" "}/ 750
 	        </p>
 
-          <div className="flex justify-center gap-x-4">
+          <div className="flex justify-center gap-x-4 no-underline">
             <Button
               href={
                 "https://forms.hackclub.com/aces-rsvp" +
@@ -134,7 +134,7 @@ export default function Home() {
             >
               RSVP
             </Button>
-            <Button color={"red"} invert disabled>
+            <Button color={"red"} invert disabled style={{filter: "brightness(0.85) saturate(0.8)"}}>
               Submit
             </Button>
           </div>
