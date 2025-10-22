@@ -5,7 +5,7 @@ export default function Navbar() {
   const isHome = useRouter().pathname === "/";
   return (
     <nav
-      className="absolute w-full z-[100] bg-transparent px-8 py-8 text-white"
+      className="absolute w-full z-[50] bg-transparent px-8 py-8 text-white"
       role="navigation"
       aria-label="Main navigation"
     >
