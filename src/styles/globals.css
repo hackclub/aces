@@ -28,6 +28,7 @@ body{
 }
 img, video, canvas { max-width:100%; height:auto; display:block; }
 a, button { touch-action: manipulation; -webkit-tap-highlight-color: rgba(0,0,0,0); text-decoration: underline; }
+main a, main button { text-decoration: none; }
 .button, button { min-height:44px; min-width:44px; padding: 10px 16px; border-radius:6px; }
 /* responsive grid example */
 .grid{ display:grid; grid-template-columns: 1fr; gap:16px; }
