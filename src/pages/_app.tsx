@@ -10,7 +10,7 @@ const outfit = Outfit({
 })
 
 export default function App({Component, pageProps}: AppProps) {
-	return <div className={`${outfit.className} bg-(--card)`}>
+	return <div className={`${outfit.className} bg-[var(--card)]`}>
 		<Flag/>
 		<Navbar/>
 		<Component id={"main-content"} {...pageProps} />
