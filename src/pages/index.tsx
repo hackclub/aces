@@ -205,14 +205,12 @@ export default function Home() {
           <ul className="space-y-3">
             {faqItems.map((item, i) => (
               <li key={i} className="border-b border-white/10 pb-3">
-                <details
-                  open={openFaq === i}
-                  onToggle={(e) => {
-                    setOpenFaq(e.currentTarget.open ? i : null);
-                  }}
-                  className="group"
-                >
+                <details open={openFaq === i} className="group">
                   <summary
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setOpenFaq((prev) => (prev === i ? null : i));
+                    }}
                     aria-expanded={openFaq === i}
                     aria-controls={`faq-${i}`}
                     className="list-none w-full flex items-center justify-between text-left py-2 cursor-pointer focus:outline-none"
