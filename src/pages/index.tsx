@@ -1,7 +1,5 @@
 import Image from "next/image";
 import Button from "@/components/Button";
-import { FaArrowDown } from "react-icons/fa6";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import ForbiddenPopup from "@/components/ForbiddenPopup";
