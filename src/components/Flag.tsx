@@ -7,7 +7,7 @@ export default function Flag() {
       href="https://hackclub.com/"
       target="_blank"
       aria-label="Hack Club's homepage"
-      style={{ position: "absolute", left: 0, top: 0, zIndex: 2 }}
+      style={{ position: "absolute", left: 0, top: 0, zIndex: 100 }}
     >
       <div className="relative w-24 h-24 md:w-32 md:h-28">
         <Image
