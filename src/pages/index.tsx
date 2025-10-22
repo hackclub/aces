@@ -140,7 +140,7 @@ export default function Home() {
               className={`cursor-pointer transition-transform duration-300 ${
                 isCardOpen
                   ? "scale-105 rotate-3 -translate-y-40"
-                  : "scale-100 animate-pulse"
+                  : "scale-100 button-tilt"
               }`}
             />
           </button>
