@@ -1,7 +1,7 @@
 {
-  "name": "aces-site-v2",
-  "version": "0.1.0",
-  "private": true,
+  "name": "aces-site",
+  "version": "1.0.0",
+  "private": false,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",

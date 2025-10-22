@@ -4,21 +4,22 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   color: "rose" | "red" | "white";
   invert?: boolean;
   href?: string;
+  disable?: boolean;
   children: React.ReactNode;
 }
 
 const baseClasses =
-  "text-xl cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5 text-center";
+  "text-xl font-medium rounded-lg text-sm px-5 py-2.5 text-center";
 
 const colorClassMap = {
   rose: {
-		normal: "text-white bg-rose-700",
-	  invert: "text-rose-700 bg-white",
+    normal: "text-white bg-rose-700",
+    invert: "text-rose-700 bg-white",
   },
-	red: {
-		normal: "text-white bg-red-500",
-		invert: "text-red-500 bg-white",
-	},
+  red: {
+    normal: "text-white bg-red-500",
+    invert: "text-red-500 bg-white",
+  },
   white: {
     normal: "text-black bg-white",
     invert: "text-white bg-black",
@@ -29,16 +30,18 @@ export default function Button({
   color,
   invert,
   href,
+  disabled,
   children,
   ...rest
 }: ButtonProps) {
   const variant = invert ? "invert" : "normal";
+  const disabledClasses = disabled ? "cursor-not-allowed" : "cursor-pointer";
   const colorClasses = colorClassMap[color][variant];
 
-  const classes = clsx(baseClasses, colorClasses);
+  const classes = clsx(baseClasses, colorClasses, disabledClasses);
   return (
     <a href={href}>
-      <button type="button" className={classes} {...rest}>
+      <button className={classes} disabled={disabled} {...rest}>
         {children}
       </button>
     </a>
