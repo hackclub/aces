@@ -35,3 +35,6 @@ a, button { touch-action: manipulation; -webkit-tap-highlight-color: rgba(0,0,0,
 @media(min-width:1024px){ .grid{ grid-template-columns: repeat(3,1fr); } }
 /* helper for safe-area aware header/footer */
 .header, .footer { padding-top: calc(12px + var(--safe-top)); padding-bottom: calc(12px + var(--safe-bottom)); }
+/* hover tilt for hero/info card */
+#learn-more button { transition-duration: 0.35s; padding: 0; }
+.button-tilt:hover { transform: rotate(1deg) scale(1.02) translateY(-18px) translateX(2px); transition-duration: 0.35s; }
