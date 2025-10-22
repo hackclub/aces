@@ -4,6 +4,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   color: "rose" | "red" | "white";
   invert?: boolean;
   href?: string;
+  disable?: boolean;
   children: React.ReactNode;
 }
 
@@ -29,8 +30,8 @@ export default function Button({
   color,
   invert,
   href,
-  children,
   disabled,
+  children,
   ...rest
 }: ButtonProps) {
   const variant = invert ? "invert" : "normal";
