@@ -36,7 +36,7 @@ export default function Home() {
     },
     {
       sum: "Human-written README",
-      det: "The README must be authored by humans. It&apos;s okay if it&apos;s not your best writing, but please make it personal!",
+      det: "The README must be authored by humans. It's okay if it's not your best writing, but please make it personal!",
     },
     {
       sum: "FOSS",
