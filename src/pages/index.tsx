@@ -116,7 +116,7 @@ export default function Home() {
             >
               RSVP
             </Button>
-            <Button color={"red"} invert>
+            <Button color={"red"} invert disabled>
               Submit
             </Button>
           </div>
