@@ -29,7 +29,7 @@ export default function ForbiddenPopup({isForbidden, isNotFound}:
 				</p>
 				<button
 					onClick={() => setShow(false)}
-					className={"text-xl cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5 text-center text-black bg-white"}
+					className={"cursor-pointer font-medium rounded-lg text-sm px-5 py-2.5 text-center text-black bg-white"}
 				>
 					Close
 				</button>
