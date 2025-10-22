@@ -8,6 +8,7 @@
     --safe-top: env(safe-area-inset-top);
     --safe-bottom: env(safe-area-inset-bottom);
     --content-max: 1200px;
+    --card: #840027
 }
 html,body{height:100%;margin:0;-webkit-font-smoothing:antialiased;}
 body{
