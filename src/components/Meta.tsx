@@ -29,32 +29,32 @@ const Meta = () => (
 		<link
 			key="safari_icon"
 			rel="mask-icon"
-			href="https://assets.hackclub.com/favicons/safari-pinned-tab.svg"
+			href="favicons/safari-pinned-tab.svg"
 			color="#cc0000"
 		/>
 		<link
 			rel="icon"
 			type="image/png"
 			sizes="16x16"
-			href="https://assets.hackclub.com/favicons/favicon-16x16.png"
+			href="favicons/favicon-16x16.png"
 		/>
 		<link
 			rel="icon"
 			type="image/png"
 			sizes="32x32"
-			href="https://assets.hackclub.com/favicons/favicon-32x32.png"
+			href="favicons/favicon-32x32.png"
 		/>
 		<link
 			rel="icon"
 			type="image/png"
 			sizes="48x48"
-			href="https://assets.hackclub.com/favicons/favicon-48x48.png"
+			href="favicons/favicon-48x48.png"
 		/>
 		<link
 			rel="icon"
 			type="image/png"
 			sizes="64x64"
-			href="https://assets.hackclub.com/favicons/favicon-64x64.png"
+			href="favicons/favicon-64x64.png"
 		/>
 	</>
 )
