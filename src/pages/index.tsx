@@ -137,7 +137,7 @@ export default function Home() {
               alt={"Aces Logo"}
               width={300}
               height={300}
-              className={`transition-transform duration-300 ${
+              className={`cursor-pointer transition-transform duration-300 ${
                 isCardOpen
                   ? "scale-105 rotate-3 -translate-y-40"
                   : "scale-100 animate-pulse"
