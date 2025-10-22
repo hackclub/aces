@@ -24,13 +24,13 @@ export default function Home() {
 	*/
 
 	const reqItems = [
-		["NO AI ART", "All non-programming assets must be created by humans"],
-		["40 hours logged", "You must log at least 40 hours of work total covering both art and code."],
-		["≤ 30% AI code", "No more than 30% of the games code can be AI-Written. Write your own code!"],
-		["Human-written README", "The README must be authored by humans. It&apos;s okay if it&apos;s not your best writing, but please make it personal!"],
-		["FOSS", "Your game must be public on GitHub (or another Git server). Include a clear license, I recommend the WTFPL!"],
-		["Shipped to itch.io or Steam", "The built game must be published on itch.io or Steam!"],
-	]
+		{ sum: "NO AI ART", det: "All non-programming assets must be created by humans" },
+		{ sum: "40 hours logged", det: "You must log at least 40 hours of work total covering both art and code." },
+		{ sum: "≤ 30% AI code", det: "No more than 30% of the games code can be AI-Written. Write your own code!" },
+		{ sum: "Human-written README", det: "The README must be authored by humans. It&apos;s okay if it&apos;s not your best writing, but please make it personal!" },
+		{ sum: "FOSS", det: "Your game must be public on GitHub (or another Git server). Include a clear license, I recommend the WTFPL!" },
+		{ sum: "Shipped to itch.io or Steam", det: "The built game must be published on itch.io or Steam!" },
+	];
 
 	const faqItems = [
 		{ q: 'Do we need Hackatime? Can we track Art?', a: 'Yes, you need Hackatime. We are currently discussing the best solution to offer time tracking for art, but it will be allowed.' },
@@ -73,15 +73,6 @@ export default function Home() {
 					  style={{width: '50%', height: '50%'}}
 					  className="mb-4 mx-auto"
 				  />
-				  {/*`<p className="md:text-3xl text-lg text-white font-medium mb-5">
-					  You ship a {" "}
-					  <span className={"text-rose-600"}>virtual card/board game</span>
-					  , we ship{" "}
-					  <span className="text-rose-600">your game physically</span> {" "}
-					  and a trip to {" "}
-					  <span className="text-rose-600 underline"><Link
-						  href={"https://awesome-con.com/"}>AwesomeCon</Link></span> in DC!
-				  </p>`*/}
 				  <p className="md:text-3xl text-lg text-white font-medium mb-5">
 					  Build your own <strong>board/card game</strong>, get a <strong>grant</strong> to make it real, and head to DC for <strong>AwesomeCon</strong> to showcase it, then stay for an in-person <strong>hackathon!</strong>
 					</p>
@@ -135,8 +126,8 @@ export default function Home() {
 				  <h2 className="text-3xl text-white font-semibold mb-4">Requirements</h2>
 				  <ul className="list-disc list-inside space-y-4">
 					  {reqItems.map((item, i) => (
-							<li key={i}>
-						    <strong>{item[0]}</strong>: {item[1]}
+						  <li key={i}>
+							  <strong>{item.sum}</strong>: {item.det}
 						  </li>
 					  ))}
 				  </ul>
@@ -150,7 +141,7 @@ export default function Home() {
 						  <li key={i} className="border-b border-white/10 pb-3">
 							  <details
 								  open={openFaq === i}
-								  onClick={(e) => {setOpenFaq(e.currentTarget.open ? i : null)}}
+								  onToggle={(e) => {setOpenFaq(e.currentTarget.open ? i : null)}}
 								  className="group"
 							  >
 								  <summary
