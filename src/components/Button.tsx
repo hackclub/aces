@@ -12,13 +12,13 @@ const baseClasses =
 
 const colorClassMap = {
   rose: {
-		normal: "text-white bg-rose-700",
-	  invert: "text-rose-700 bg-white",
+    normal: "text-white bg-rose-700",
+    invert: "text-rose-700 bg-white",
   },
-	red: {
-		normal: "text-white bg-red-500",
-		invert: "text-red-500 bg-white",
-	},
+  red: {
+    normal: "text-white bg-red-500",
+    invert: "text-red-500 bg-white",
+  },
   white: {
     normal: "text-black bg-white",
     invert: "text-white bg-black",
