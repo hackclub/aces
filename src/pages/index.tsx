@@ -134,7 +134,7 @@ export default function Home() {
             >
               RSVP
             </Button>
-            <Button color={"red"} invert disabled style={{filter: "brightness(0.85) saturate(0.8)"}}>
+            <Button color={"red"} invert disabled>
               Submit
             </Button>
           </div>
