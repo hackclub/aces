@@ -124,7 +124,7 @@ export default function Home() {
 		        {" "}/ 750
 	        </p>
 
-          <div className="flex justify-center gap-x-4">
+          <div className="flex justify-center gap-x-4 no-underline">
             <Button
               href={
                 "https://forms.hackclub.com/aces-rsvp" +
@@ -158,7 +158,7 @@ export default function Home() {
               className={`cursor-pointer transition-transform duration-300 ${
                 isCardOpen
                   ? "scale-105 rotate-3 -translate-y-40"
-                  : "scale-100 animate-pulse"
+                  : "scale-100 button-tilt"
               }`}
             />
           </button>
