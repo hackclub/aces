@@ -1,5 +1,6 @@
 import type { Project } from "./api/gallery"
 import { useEffect, useState } from "react";
+import ProjectCard from "@/components/ProjectCard";
 
 export default function Gallery() {
 	const [projects, setProjects] = useState<Project[]>([])
@@ -15,7 +16,7 @@ export default function Gallery() {
 			<div className={"flex flex-col flex-wrap justify-evenly align-center"}>
 				{projects.map((project, i) => (
 					<div key={i}>
-						<p className={"text-center"}>{project.name}</p>
+						<ProjectCard project={project} key={i} />
 					</div>
 				))}
 			</div>
