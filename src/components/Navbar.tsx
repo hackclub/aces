@@ -36,7 +36,7 @@ export default function Navbar() {
         <li className="inline">
           <Link href="/gallery" className="md:text-xl text-md hover:text-gray-300">
             Gallery
-          </a>
+          </Link>
         </li>
         <li className="inline">
           <Link href="/#faq" className="md:text-xl text-md hover:text-gray-300">
