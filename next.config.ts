@@ -8,7 +8,13 @@ const nextConfig: NextConfig = {
 module.exports = {
 	images: {
 		remotePatterns: [
-			new URL('https://hc-cdn.hel1.your-objectstorage.com/**')
+			new URL('https://hc-cdn.hel1.your-objectstorage.com/**'),
+			{
+				protocol: 'https',
+				host: 'placeholder.co',
+				port: '',
+				pathname: "/**"
+			}
 		],
 	},
 	async redirects() {
