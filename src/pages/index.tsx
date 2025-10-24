@@ -83,6 +83,7 @@ export default function Home() {
 		fetch("https://aces.femboyin.tech/count")
 			.then(res => {
 				console.log("YAY RSVPS GOTTEN")
+				if (!res.ok) throw new Error(`HTTP error ${res.status}`)
 				return res.json()
 			})
 			.then((json) => {
