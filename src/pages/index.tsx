@@ -252,7 +252,7 @@ export default function Home() {
                         : "max-h-0 opacity-0"
                     }`}
                   >
-                    <p>{item.a}</p>
+                    <p className={"text-lg"}>{item.a}</p>
                   </div>
                 </details>
               </li>
