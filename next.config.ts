@@ -10,10 +10,7 @@ module.exports = {
 		remotePatterns: [
 			new URL('https://hc-cdn.hel1.your-objectstorage.com/**'),
 			{
-				protocol: 'https',
-				hostname: 'placeholder.co',
-				port: '',
-				pathname: "/**"
+				hostname: 'placehold.co',
 			}
 		],
 	},
