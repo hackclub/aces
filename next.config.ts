@@ -11,7 +11,7 @@ module.exports = {
 			new URL('https://hc-cdn.hel1.your-objectstorage.com/**'),
 			{
 				protocol: 'https',
-				host: 'placeholder.co',
+				hostname: 'placeholder.co',
 				port: '',
 				pathname: "/**"
 			}
