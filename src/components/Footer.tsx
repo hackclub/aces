@@ -1,4 +1,5 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
+import { TbGitCommit } from "react-icons/tb";
 
 export default function Footer() {
 	const [commit, setCommit] = useState({
@@ -20,7 +21,7 @@ export default function Footer() {
 	}, []);
 
   return (
-    <footer className="w-full text-center bg-rose-800 p-5 text-white">
+    <footer className="w-full text-center bg-rose-800 p-5 text-white flex flex-col items-center justify-center">
       <p className="md:text-lg text-md">
         Made with love by Hack Club. Check out our{" "}
         <a className="text-rose-200" href="https://github.com/hackclub/aces">
@@ -32,6 +33,12 @@ export default function Footer() {
         </a>
         .
       </p>
+      <div className={"flex flex-row align-center content-center"}>
+        <TbGitCommit className={"self-center justify-center text-rose-200"}/>
+        <a href={`https://github.com/hackclub/aces/commit/${commit.hash}`} className={"self-center justify-center text-rose-200"}>
+          {commit.hash}: {commit.message}
+        </a>
+      </div>
     </footer>
   );
 }
