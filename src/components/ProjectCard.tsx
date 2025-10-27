@@ -1,5 +1,5 @@
 import {Project} from "@/pages/api/gallery";
-import Image  from "next/image"
+import Image from "next/image"
 
 interface CardProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   project: Project;
@@ -7,17 +7,10 @@ interface CardProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 export default function ProjectCard({ project }: CardProps) {
   return (
-    <div className="w-full bg-white md:px-7 px-5 py-8 rounded-xl">
-      <h1 className="text-4xl font-bold text-center mb-5 text-indigo-500">
-	      {project.name}
-      </h1>
-	    <Image
-		    src={project.imageURL!}
-		    alt={"Project " + project.name}
-		    width={600}
-		    height={400}
-	    />
-      <p className="md:text-lg text-md text-indigo-800">{project.description}</p>
+    <div className={"container rounded-lg flex flex-col justify-center items-center w-auto h-auto bg-rose-200"}>
+      <h2 className={"stroke-1 text-3xl "}>{project.name}</h2>
+      <p>{project.description}</p>
+      <Image src={project.imageURL || "/orph_confuzzled.png"} alt={`${project.name} image`} width={600} height={400}></Image>
     </div>
   );
 }

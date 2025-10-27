@@ -10,10 +10,10 @@ export default function Gallery() {
 			.then(data => setProjects(data))
 	}, [])
 
-	return <main>
-		<div className="container h-screen flex flex-col justify-evenly md:p-0 p-5">
+	return <main className={"container"}>
+		<div className="container min-h-screen flex flex-col justify-evenly md:p-0 p-5">
 			<h1 className={"text-white text-8xl text-center"}>Gallery</h1>
-			<div className={"flex flex-col flex-wrap justify-evenly align-center"}>
+			<div className={"flex flex-row flex-wrap justify-center-safe align-center p-10 m-4 gap-10"}>
 				{projects.map((project, i) => (
 					<div key={i}>
 						<ProjectCard project={project} key={i} />

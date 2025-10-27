@@ -1,11 +1,9 @@
-// hiya! if this file is being used in prod, something is *very* wrong. this file is meant for development ONLY.
-
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 export type Project = {
 	name: string
 	description: string
-	imageURL?: string
+	imageURL: string
 	repo: string
 }
 
