@@ -1,4 +1,3 @@
-import childProcess from "node:child_process";
 import { NextApiRequest, NextApiResponse } from "next";
 
 const branch = process.env.NODE_ENV === "production" ? "main" : "dev";
