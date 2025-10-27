@@ -170,7 +170,7 @@ export default function Home() {
                 : "opacity-0 -translate-y-4 pointer-events-none"
             }`}
           >
-            <div className="bg-white text-black p-4 rounded shadow-lg w-80">
+            <div className="bg-white text-black text-2xl p-4 rounded shadow-lg w-80">
               <ul>
                 <li>
                   Create a{" "}
