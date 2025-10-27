@@ -10,6 +10,7 @@ let cache: {
 export default async function handler(_req: NextApiRequest, res: NextApiResponse) {
 	if (!cache) {
 		const githubRes = await fetch(`https://api.github.com/repos/hackclub/aces/commits/${branch}`)
+    if (!githubRes.ok) throw new Error(`GitHub API error: ${githubRes.status}`)
     const json = await githubRes.json()
 		cache = {
       hash: json.sha.substring(0,7),
