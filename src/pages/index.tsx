@@ -11,15 +11,8 @@ export default function Home() {
   const [ref, setRef] = useState<string | null>(null);
   const [isCardOpen, setIsCardOpen] = useState<boolean>(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+	const [rsvpCount, setRsvpCount] = useState(-1);
 
-  /*
-	<li>
-	<strong>Open source on GitHub</strong>: Your game must be public on GitHub (include a clear license, I recommend the WTFPL).
-	</li>
-	<li>
-	<strong>Shipped to itch.io or Steam</strong>: The built game must be published on itch.io or Steam!
-	</li>
-	*/
 
   const reqItems = [
     {
@@ -85,6 +78,20 @@ export default function Home() {
     setIsForbidden(isForbidden);
     setRef(currRef);
   }, [router.isReady, router.query]);
+
+	useEffect(() => {
+		fetch("https://aces.femboyin.tech/count")
+			.then(res => {
+				console.log("YAY RSVPS GOTTEN")
+				if (!res.ok) throw new Error(`HTTP error ${res.status}`)
+				return res.json()
+			})
+			.then((json) => {
+				setRsvpCount(json.record_count!)
+			})
+			.catch((err) => console.error('rsvp fetch failed', err))
+	}, []);
+
   return (
     <main>
       <div className="container h-screen flex items-center md:p-0 p-5">
@@ -105,8 +112,19 @@ export default function Home() {
             <strong>AwesomeCon</strong> to showcase it, then stay for an
             in-person <strong>hackathon!</strong>
           </p>
+	        <p className="md:text-2xl text-sm text-white font-medium mb-5">
+		        Current RSVP Count:{" "}
+		        {
+							rsvpCount === -1 ? (
+				        <span className="font-bold animate-pulse">...</span>
+			        ) : (
+				        <span className="font-bold">{rsvpCount}</span>
+			        )
+						}
+		        {" "}/ 750
+	        </p>
 
-          <div className="flex justify-center gap-x-4">
+          <div className="flex justify-center gap-x-4 no-underline">
             <Button
               href={
                 "https://forms.hackclub.com/aces-rsvp" +
@@ -140,7 +158,7 @@ export default function Home() {
               className={`cursor-pointer transition-transform duration-300 ${
                 isCardOpen
                   ? "scale-105 rotate-3 -translate-y-40"
-                  : "scale-100 animate-pulse"
+                  : "scale-100 button-tilt"
               }`}
             />
           </button>
