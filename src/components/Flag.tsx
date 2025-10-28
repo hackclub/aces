@@ -14,12 +14,7 @@ export default function Flag() {
           src="https://assets.hackclub.com/flag-orpheus-left.svg"
           alt="Hack Club flag"
           fill
-          style={{
-            objectFit: "contain",
-            transformOrigin: "0% 0%",
-            transition: "transform 0.1s",
-          }}
-          className="flag"
+          className={"flag object-contain origin-top-left duration-100"}
         />
       </div>
     </Link>
