@@ -20,7 +20,7 @@ FROM oven/bun:1 AS runner
 WORKDIR /app
 
 # Copy only what’s needed for runtime
-COPY --from=builder /app/package.json /app/bun.lockb ./
+COPY --from=builder /app/package.json /app/bun.lock ./
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 
