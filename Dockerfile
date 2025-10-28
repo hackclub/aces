@@ -1,30 +1,37 @@
-# ---- Build stage ----
-FROM node:20-alpine AS builder
+FROM oven/bun:1 AS builder
+
+# Set working directory
 WORKDIR /app
 
-# Copy package files for caching
-COPY package*.json ./
+# Copy dependencies first for better caching
+COPY bun.lock package.json ./
 
 # Install dependencies
-RUN npm ci
+RUN bun install --frozen-lockfile
 
-# Copy all source code
+# Copy rest of the app
 COPY . .
 
-# Build Next.js (standalone)
-RUN npm run build
+# Build the Next.js app
+RUN bun run build
 
-# ---- Production stage ----
-FROM node:20-alpine
+FROM oven/bun:1 AS runner
+
 WORKDIR /app
 
-# Copy standalone output + static + public folders
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
+# Copy only what’s needed for runtime
+COPY --from=builder /app/package.json /app/bun.lock ./
+COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 
-# Expose Next.js default port
+# Install only production deps
+RUN bun install --production --frozen-lockfile
+
+# Expose port
 EXPOSE 3000
 
-# Run the standalone server
-CMD ["node", "server.js"]
+# Set environment
+ENV NODE_ENV=production
+
+# Start the app
+CMD ["bun", "run", "start"]
