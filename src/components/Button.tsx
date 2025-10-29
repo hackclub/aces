@@ -2,9 +2,9 @@ import clsx from "clsx";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   color: "rose" | "red" | "white";
-  invert?: true;
+  invert?: boolean;
   href?: string;
-  disable?: true;
+  disable?: boolean;
   children: React.ReactNode;
 }
 
