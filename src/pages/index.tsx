@@ -3,6 +3,7 @@ import Button from "@/components/Button";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import ForbiddenPopup from "@/components/ForbiddenPopup";
+import RSVP from "@/components/RSVP";
 
 export default function Home() {
   const router = useRouter();
@@ -11,8 +12,6 @@ export default function Home() {
   const [ref, setRef] = useState<string | null>(null);
   const [isCardOpen, setIsCardOpen] = useState<boolean>(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-	const [rsvpCount, setRsvpCount] = useState(-1);
-
 
   const reqItems = [
     {
@@ -79,19 +78,6 @@ export default function Home() {
     setRef(currRef);
   }, [router.isReady, router.query]);
 
-	useEffect(() => {
-		fetch("https://aces.femboyin.tech/count")
-			.then(res => {
-				console.log("YAY RSVPS GOTTEN")
-				if (!res.ok) throw new Error(`HTTP error ${res.status}`)
-				return res.json()
-			})
-			.then((json) => {
-				setRsvpCount(json.record_count!)
-			})
-			.catch((err) => console.error('rsvp fetch failed', err))
-	}, []);
-
   return (
     <main>
       <div className="container h-screen flex items-center md:p-0 p-5">
@@ -113,15 +99,7 @@ export default function Home() {
             in-person <strong>hackathon!</strong>
           </p>
 	        <p className="md:text-2xl text-sm text-white font-medium mb-5">
-		        Current RSVP Count:{" "}
-		        {
-							rsvpCount === -1 ? (
-				        <span className="font-bold animate-pulse">...</span>
-			        ) : (
-				        <span className="font-bold">{rsvpCount}</span>
-			        )
-						}
-		        {" "}/ 750
+		        Current RSVP Count: <RSVP/> / 750
 	        </p>
 
           <div className="flex justify-center gap-x-4 no-underline">
