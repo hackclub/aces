@@ -98,9 +98,9 @@ export default function Home() {
             <strong>AwesomeCon</strong> to showcase it, then stay for an
             in-person <strong>hackathon!</strong>
           </p>
-	        <p className="md:text-2xl text-sm text-white font-medium mb-5">
-		        Current RSVP Count: <RSVP/> / 750
-	        </p>
+          <p className="md:text-2xl text-sm text-white font-medium mb-5">
+            Current RSVP Count: <RSVP/> / 750
+          </p>
 
           <div className="flex justify-center gap-x-4 no-underline">
             <Button
