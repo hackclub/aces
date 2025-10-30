@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import Airtable from "airtable";
 
 async function getCount() {
   let offset;
