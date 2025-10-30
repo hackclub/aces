@@ -8,10 +8,10 @@ Welcome to **Aces**, the official website for Hack Club's ultimate board/card ga
 
 Aces is an exciting opportunity for game developers and creators to:
 
-1. **Build a digital board or card game** - Create a virtual game in 40 hours
+1. **Build a digital board or card game** - Create a virtual game with at least 40 hours of logged work
 2. **Get a grant** - Receive funding to manufacture your game in real life
 3. **Attend AwesomeCon** - Get free tickets to AwesomeCon, a major DC convention
-4. **Join The Deck** - Participate in a 48-hour hackathon in Washington DC (March 13-15)
+4. **Join The Deck** - Participate in a 48-hour in-person hackathon in Washington DC (March 13-15)
 
 This website serves as the central hub for the event, providing information, handling RSVPs, and showcasing participant projects.
 
@@ -20,7 +20,7 @@ This website serves as the central hub for the event, providing information, han
 To participate in Aces and get invited to The Deck, you must meet these requirements:
 
 - **🚫 NO AI ART** - All non-programming assets must be created by humans
-- **⏰ 40 hours logged** - Log at least 40 hours of work covering both art and code (tracked via Hackatime)
+- **⏰ 40 hours logged** - Log at least 40 hours of work on your game covering both art and code (tracked via Hackatime). This earns you an invitation to The Deck, a separate 48-hour in-person hackathon event.
 - **🤖 ≤ 30% AI code** - No more than 30% of the game's code can be AI-written
 - **📝 Human-written README** - The README must be authored by humans
 - **📖 FOSS** - Your game must be public on GitHub with a clear license
@@ -77,8 +77,8 @@ aces/
 
 ### Prerequisites
 
-- **Node.js** 20.x or later, OR
-- **Bun** 1.x or later
+- **Node.js** ≥20.0.0, OR
+- **Bun** ≥1.0.0
 
 ### Installation
 
@@ -166,7 +166,7 @@ The main page features:
 **`/api/git.ts`** - Fetches the latest commit information from the GitHub repository
 - Caches the result to reduce API calls
 - Returns commit hash and message
-- Switches between `main` and `dev` branches based on environment
+- Switches between `main` and `dev` branches based on `NODE_ENV` (production uses `main`, development uses `dev`)
 
 #### Styling System
 
