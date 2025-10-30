@@ -21,7 +21,7 @@ async function getCount() {
     offset = data.offset;
   } while (offset);
 
-  return count
+  return count;
 }
 
 let cached = { value: -1, updated: 0 };
