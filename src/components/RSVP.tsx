@@ -11,7 +11,7 @@ export default function RSVP() {
   });
 
   if (error) return <span className="font-bold text-rose-300">error!</span>;
-  if (!data || data.count == -1) return <span className="font-bold animate-pulse ">...</span>
+  if (!data || data.count === -1) return <span className="font-bold animate-pulse ">...</span>
 
   return <span className="font-bold">{data.count}</span>
 }
