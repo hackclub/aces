@@ -13,12 +13,16 @@ async function getCount() {
         Authorization: `Bearer ${process.env.RSVP_AIRTABLE_API_KEY}`,
       },
     });
-
-    await new Promise((resolve) => setTimeout(resolve, 200));
-
+    if (!res.ok) {
+      console.error(res.statusText);
+      await new Promise((resolve) => setTimeout(resolve, 200));
+      continue
+    }
     const data = await res.json();
     count += data.records?.length ?? 0;
     offset = data.offset;
+
+    if (offset) await new Promise((resolve) => setTimeout(resolve, 200));
   } while (offset);
 
   return count;
