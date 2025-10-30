@@ -8,8 +8,8 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
       - run: npm install -g yarn # this is necessary for act, also just a good failsafe
       - run: yarn install
       - run: yarn lint
