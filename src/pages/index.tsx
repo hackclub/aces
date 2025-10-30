@@ -93,8 +93,8 @@ export default function Home() {
             className="mb-4 mx-auto"
           />
           <p className="md:text-3xl text-lg text-white font-medium mb-5">
-            Build your own <strong>board/card game</strong>, get a{" "}
-            <strong>grant</strong> to make it real, and head to DC for{" "}
+            Build your own digital <strong>board/card game</strong>, get a{" "}
+            <strong>grant</strong> to build it irl, and head to DC for{" "}
             <strong>AwesomeCon</strong> to showcase it, then stay for an
             in-person <strong>hackathon!</strong>
           </p>
