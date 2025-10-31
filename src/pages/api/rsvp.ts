@@ -31,10 +31,14 @@ async function getCount() {
 let cached = { value: -1, updated: 0 };
 
 setInterval(async () => {
-  const count = await getCount();
-  cached = { value: count, updated: Date.now() };
-  console.log("cached value", cached);
-}, 5000);
+  try {
+    const count = await getCount();
+    cached = { value: count, updated: Date.now() };
+    console.log("cached value", cached.value, "updatedAt", new Date(cached.updated).toISOString());
+  } catch (err: unknown) {
+    console.error("getCount failed:", err);
+  }
+}, 30000);
 
 export default async function handler(_req: NextApiRequest, res: NextApiResponse) {
   res.status(200).json({ count: cached.value });
