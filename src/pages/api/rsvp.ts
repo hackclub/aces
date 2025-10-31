@@ -41,7 +41,7 @@ export default async function handler(_req: NextApiRequest, res: NextApiResponse
       console.log("cached value", cached.value, "updatedAt", new Date(cached.updated).toISOString());
     } catch (err: unknown) {
       console.error("getCount failed:", err);
-      // Optionally, you can return the old cached value or an error
+      res.status(500).json({ error: "couldnt get count" });
     }
   }
   res.status(200).json({ count: cached.value });
