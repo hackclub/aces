@@ -15,7 +15,6 @@ async function getCount() {
     });
     if (!res.ok) {
       console.error(res.statusText);
-      await new Promise((resolve) => setTimeout(resolve, 200));
       throw new Error(res.statusText);
     }
     const data = await res.json();
