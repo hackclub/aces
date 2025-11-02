@@ -16,7 +16,7 @@ This report documents potential Personally Identifiable Information (PII) leaks 
 
 ### 1. **RSVP Form - External Data Collection** (HIGH RISK)
 
-**Location:** `src/pages/index.tsx` (Lines 106-114)
+**Location:** `src/pages/index.tsx` (Lines 107-110, within Button component at lines 106-114)
 
 **Description:**  
 The RSVP button redirects users to an external Hack Club form at `https://forms.hackclub.com/aces-rsvp` with a referral parameter that may track user sources.
@@ -62,7 +62,7 @@ The RSVP button redirects users to an external Hack Club form at `https://forms.
 
 ### 2. **Referral Tracking Parameter** (MEDIUM RISK)
 
-**Location:** `src/pages/index.tsx` (Lines 64-79)
+**Location:** `src/pages/index.tsx` (Lines 68-74, within useEffect hook at lines 64-79)
 
 **Description:**  
 The site extracts and validates a `ref` query parameter from the URL that can be used to track referral sources.
@@ -102,7 +102,7 @@ if (currRef && !/^\d+$/.test(currRef)) {
 
 ### 3. **External RSVP Count API** (MEDIUM RISK)
 
-**Location:** `src/components/RSVP.tsx` (Lines 6-9)
+**Location:** `src/components/RSVP.tsx` (Line 6, API URL in useSWR hook spanning lines 6-9)
 
 **Description:**  
 The site fetches RSVP count from an external API at `https://aces.femboyin.tech/count`.
@@ -264,12 +264,12 @@ The site loads images from `https://hc-cdn.hel1.your-objectstorage.com/`.
 
 ### COPPA (Children's Online Privacy Protection Act)
 - ⚠️ **WARNING:** Hack Club events often involve minors
-- ✗ No parental consent mechanism if users under 13
+- ✗ No parental consent mechanism for children under 13
 - ✗ No age verification on RSVP form
 
 **Required COPPA Compliance Actions:**
 1. **Age Gate Implementation** - Add date of birth field on RSVP form
-2. **Parental Consent Mechanism** - For users under 13:
+2. **Parental Consent Mechanism** - For children under 13 (ages 0-12):
    - Collect parent/guardian email address
    - Send parental consent request email with:
      - Clear disclosure of data collection practices
