@@ -128,7 +128,7 @@ const { data, error } = useSWR("https://aces.femboyin.tech/count", fetcher, {
 1. Third-party API endpoint with unknown data retention policies
 2. No HTTPS verification in code (though URL uses HTTPS)
 3. Automatic refresh every 60 seconds may accumulate logs
-4. Domain appears to be personally owned, not organizational
+4. Domain ownership should be verified to ensure organizational control
 
 **Recommendations:**
 - Document API data handling practices
@@ -266,6 +266,24 @@ The site loads images from `https://hc-cdn.hel1.your-objectstorage.com/`.
 - ⚠️ **WARNING:** Hack Club events often involve minors
 - ✗ No parental consent mechanism if users under 13
 - ✗ No age verification on RSVP form
+
+**Required COPPA Compliance Actions:**
+1. **Age Gate Implementation** - Add date of birth field on RSVP form
+2. **Parental Consent Mechanism** - For users under 13:
+   - Collect parent/guardian email address
+   - Send parental consent request email with:
+     - Clear disclosure of data collection practices
+     - What information will be collected from child
+     - How information will be used
+     - Option to review child's information
+     - Option to refuse further collection/use
+     - Link to privacy policy
+   - Verify parental consent before allowing participation
+3. **Parental Rights** - Allow parents to:
+   - Review child's personal information
+   - Direct deletion of child's information
+   - Refuse further collection or use
+4. **Age-Appropriate Language** - Ensure privacy notices are understandable by minors
 
 ---
 
