@@ -1,7 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
-const branch = process.env.NODE_ENV === "production" ? "main" : "dev";
-
 let cache: {
 	hash: string,
 	message: string
@@ -9,7 +7,7 @@ let cache: {
 
 export default async function handler(_req: NextApiRequest, res: NextApiResponse) {
 	if (!cache) {
-		const githubRes = await fetch(`https://api.github.com/repos/hackclub/aces/commits/${branch}`)
+		const githubRes = await fetch(`https://api.github.com/repos/hackclub/aces/commits/main`)
     if (!githubRes.ok) throw new Error(`GitHub API error: ${githubRes.status}`)
     const json = await githubRes.json()
 		cache = {
