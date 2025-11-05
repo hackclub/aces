@@ -1,11 +1,12 @@
 import clsx from "clsx";
+import { ReactNode } from "react";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   color: "rose" | "red" | "white";
   invert?: boolean;
   href?: string;
   disable?: boolean;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const baseClasses =
