@@ -69,7 +69,7 @@ export default function Home() {
 
     let currRef = rawRef ? (rawRef as string) : null;
 
-    if (currRef && !/^\d+$/.test(currRef)) {
+    if (currRef && /^\d+$/.test(currRef)) {
       currRef = null;
     }
 
