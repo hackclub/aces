@@ -1,3 +1,4 @@
+// src/pages/api/rsvp.ts
 import { NextApiRequest, NextApiResponse } from "next";
 
 async function getCount() {
@@ -32,17 +33,33 @@ let cached = { value: -1, updated: 0 };
 // Cache duration in milliseconds
 const CACHE_DURATION = 30000;
 
-export default async function handler(_req: NextApiRequest, res: NextApiResponse) {
-  const now = Date.now();
-  if (now - cached.updated > CACHE_DURATION) {
-    try {
-      const count = await getCount();
-      cached = { value: count, updated: now };
-      console.log("cached value", cached.value, "updatedAt", new Date(cached.updated).toISOString());
-    } catch (err: unknown) {
-      console.error("getCount failed:", err);
-      res.status(500).json({ error: "couldnt get count" });
-    }
+// Extend global to hold a single timer across module reloads (avoid duplicate timers in dev)
+declare global {
+  var __RSVP_CACHE_TIMER__: NodeJS.Timeout | undefined;
+}
+
+async function updateCache() {
+  try {
+    const count = await getCount();
+    cached = { value: count, updated: Date.now() };
+    console.log("cached value", cached.value, "updatedAt", new Date(cached.updated).toISOString());
+  } catch (err: unknown) {
+    console.error("updateCache failed:", err);
+    // keep previous cached value
   }
-  res.status(200).json({ count: cached.value });
+}
+
+// Start background updater once per server instance
+if (!global.__RSVP_CACHE_TIMER__) {
+  // initial immediate update (fire-and-forget)
+  updateCache().catch((e) => console.error("initial update failed:", e));
+
+  // schedule periodic updates
+  global.__RSVP_CACHE_TIMER__ = setInterval(() => {
+    updateCache().catch((e) => console.error("scheduled update failed:", e));
+  }, CACHE_DURATION);
+}
+
+export default function handler(_req: NextApiRequest, res: NextApiResponse) {
+  res.status(200).json({ count: cached.value, updatedAt: cached.updated });
 }
