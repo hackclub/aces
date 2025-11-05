@@ -61,5 +61,9 @@ if (!global.__RSVP_CACHE_TIMER__) {
 }
 
 export default function handler(_req: NextApiRequest, res: NextApiResponse) {
+  if (cached.value === -1) {
+    res.status(503).json({ error: "Service Unavailable: RSVP count not yet available." });
+    return;
+  }
   res.status(200).json({ count: cached.value, updatedAt: cached.updated });
 }
