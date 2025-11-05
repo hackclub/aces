@@ -60,6 +60,21 @@ if (!global.__RSVP_CACHE_TIMER__) {
   }, CACHE_DURATION);
 }
 
+// Cleanup function to clear the background timer
+export function shutdownRSVPTimer() {
+  if (global.__RSVP_CACHE_TIMER__) {
+    clearInterval(global.__RSVP_CACHE_TIMER__);
+    global.__RSVP_CACHE_TIMER__ = undefined;
+    console.log("RSVP cache timer cleared.");
+  }
+}
+
+// Optionally clear timer on process exit (for dev/hot-reload environments)
+if (typeof process !== "undefined" && process.on) {
+  process.on("SIGTERM", shutdownRSVPTimer);
+  process.on("SIGINT", shutdownRSVPTimer);
+  process.on("exit", shutdownRSVPTimer);
+}
 export default function handler(_req: NextApiRequest, res: NextApiResponse) {
   if (cached.value === -1) {
     res.status(503).json({ error: "Service Unavailable: RSVP count not yet available." });
