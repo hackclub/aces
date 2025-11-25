@@ -5,12 +5,20 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const valid = /^\w+@\w+\.\w{2,}$/.test(email);
 
-  function clicky(
+  async function clicky(
     email: string,
     otp: string | undefined
   ) {
     if (!otpVisible) {
       alert("yes, sending otp to " + email);
+
+      const IDVres = await fetch(`https://identity.hackclub.com/api/external/check?email=${email}`)
+      const IDVdata = await IDVres.json();
+      const result = IDVdata["result"] === "verified_eligible";
+      if (!result) {
+        alert("Verify at https://identity.hackclub.com/verify to continue.");
+        return;
+      }
       setOtpVisible(true);
     } else {
       // do the verification
