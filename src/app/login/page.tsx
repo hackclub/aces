@@ -1,9 +1,10 @@
+"use client";
 import { useState } from "react";
 
 export default function LoginPage() {
   const [otpVisible, setOtpVisible] = useState(false);
   const [email, setEmail] = useState("");
-  const valid = /^\w+@\w+\.\w{2,}$/.test(email);
+  const valid = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/.test(email);
 
   async function clicky(
     email: string,

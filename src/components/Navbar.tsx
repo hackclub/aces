@@ -1,8 +1,9 @@
+"use client";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
-  const isHome = useRouter().pathname === "/";
+  const isHome = usePathname() === "/";
   return (
     <nav
       className="absolute w-full z-[50] bg-transparent px-8 py-8 text-white"

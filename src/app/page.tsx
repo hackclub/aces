@@ -1,12 +1,11 @@
+"use client"
 import Image from "next/image";
 import Button from "@/components/Button";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import ForbiddenPopup from "@/components/ForbiddenPopup";
-import RSVP from "@/components/RSVP";
+import { useParams } from "next/navigation";
 
 export default function Home() {
-  const router = useRouter();
   const [is404, setIs404] = useState<boolean>(false);
   const [isForbidden, setIsForbidden] = useState<boolean>(false);
   const [ref, setRef] = useState<string | null>(null);
@@ -61,11 +60,11 @@ export default function Home() {
     },
   ];
 
+  const params = useParams()
   useEffect(() => {
-    if (!router.isReady) return;
-    const is404 = "404" in router.query;
-    const isForbidden = "forbidden" in router.query;
-    const rawRef = router.query["ref"];
+    const is404 = params["404"] === "true";
+    const isForbidden = params["forbidden"] === "true";
+    const rawRef = params["ref"]
 
     let currRef = rawRef ? (rawRef as string) : null;
 
@@ -76,7 +75,7 @@ export default function Home() {
     setIs404(is404);
     setIsForbidden(isForbidden);
     setRef(currRef);
-  }, [router.isReady, router.query]);
+  }, [params]);
 
   return (
     <main>
