@@ -100,15 +100,15 @@ export default function Home() {
           <div className="flex justify-center gap-x-4 no-underline">
             <Button
               href={
-                "/login" +
+                "https://forms.hackclub.com/aces-rsvp" +
                 (ref ? `?ref=${ref}` : "")
               }
               color={"rose"}
             >
-              Sign In
+              RSVP
             </Button>
-            <Button color={"red"} invert disabled>
-              Submit
+            <Button color={"red"} invert href={"/login"}>
+              Login
             </Button>
           </div>
         </div>
