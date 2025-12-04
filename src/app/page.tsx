@@ -7,8 +7,6 @@ import { useParams } from "next/navigation";
 
 export default function Home() {
   const [is404, setIs404] = useState<boolean>(false);
-  const [isForbidden, setIsForbidden] = useState<boolean>(false);
-  const [ref, setRef] = useState<string | null>(null);
   const [isCardOpen, setIsCardOpen] = useState<boolean>(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
@@ -31,7 +29,7 @@ export default function Home() {
     },
     {
       sum: "FOSS",
-      det: "Your game must be public on GitHub (or another Git server). Include a clear license, I recommend the WTFPL!",
+      det: `Your game must be public on ${<a href='https://github.com'>GitHub</a>} (or another Git server). Include a clear license, I recommend the WTFPL!`,
     },
     {
       sum: "Shipped to itch.io or Steam",
@@ -63,24 +61,13 @@ export default function Home() {
   const params = useParams()
   useEffect(() => {
     const is404 = params["404"] === "true";
-    const isForbidden = params["forbidden"] === "true";
-    const rawRef = params["ref"]
-
-    let currRef = rawRef ? (rawRef as string) : null;
-
-    if (currRef && !/^\d+$/.test(currRef)) {
-      currRef = null;
-    }
-
     setIs404(is404);
-    setIsForbidden(isForbidden);
-    setRef(currRef);
   }, [params]);
 
   return (
     <main>
       <div className="container h-screen flex items-center md:p-0 p-5">
-        <ForbiddenPopup isForbidden={isForbidden} isNotFound={is404} />
+        <ForbiddenPopup isNotFound={is404} />
         <h1 className="sr-only">Ace Homepage</h1>
         <div className="w-full text-center self-center">
           <Image
@@ -99,12 +86,7 @@ export default function Home() {
           </p>
           <div className="flex justify-center gap-x-4 no-underline">
             <Button
-              href={
-                "https://forms.hackclub.com/aces-rsvp" +
-                (ref ? `?ref=${ref}` : "")
-              }
-              color={"rose"}
-            >
+              href={"#learnmore"}  color={"rose"}>
               RSVP
             </Button>
             <Button color={"red"} invert href={"/login"}>
