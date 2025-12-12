@@ -1,15 +1,12 @@
 "use client"
 import Image from "next/image";
 import Button from "@/components/Button";
-import { useEffect, useState } from "react";
-import ForbiddenPopup from "@/components/ForbiddenPopup";
-import { useParams } from "next/navigation";
+import { useState } from "react";
 import Flag from "@/components/Flag";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export default function Home() {
-  const [is404, setIs404] = useState<boolean>(false);
   const [isCardOpen, setIsCardOpen] = useState<boolean>(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
@@ -61,18 +58,11 @@ export default function Home() {
     },
   ];
 
-  const params = useParams()
-  useEffect(() => {
-    const is404 = params["404"] === "true";
-    setIs404(is404);
-  }, [params]);
-
   return <>
     <Flag />
     <Navbar />
     <main>
       <div className="container h-screen flex items-center md:p-0 p-5">
-        <ForbiddenPopup isNotFound={is404} />
         <h1 className="sr-only">Ace Homepage</h1>
         <div className="w-full text-center self-center">
           <Image
