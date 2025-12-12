@@ -4,6 +4,9 @@ import Button from "@/components/Button";
 import { useEffect, useState } from "react";
 import ForbiddenPopup from "@/components/ForbiddenPopup";
 import { useParams } from "next/navigation";
+import Flag from "@/components/Flag";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   const [is404, setIs404] = useState<boolean>(false);
@@ -64,7 +67,9 @@ export default function Home() {
     setIs404(is404);
   }, [params]);
 
-  return (
+  return <>
+    <Flag />
+    <Navbar />
     <main>
       <div className="container h-screen flex items-center md:p-0 p-5">
         <ForbiddenPopup isNotFound={is404} />
@@ -86,10 +91,10 @@ export default function Home() {
           </p>
           <div className="flex justify-center gap-x-4 no-underline">
             <Button
-              href={"#learnmore"}  color={"rose"}>
-              RSVP
+              href={"#learn-more"}  color={"rose"}>
+              Learn More
             </Button>
-            <Button color={"red"} invert href={"/login"}>
+            <Button color={"red"} invert href={"/dashboard"}>
               Login
             </Button>
           </div>
@@ -216,5 +221,6 @@ export default function Home() {
         </div>
       </div>
     </main>
-  );
+    <Footer />
+  </>
 }

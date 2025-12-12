@@ -17,16 +17,10 @@ export default function RootLayout({ children}: { children: ReactNode }) {
       <Meta />
     </head>
     <body className={`${outfit.className} bg-[var(--card)]`}>
-    <a
-      className="absolute p-3 m-3 left-0 -translate-y-20 focus:translate-y-0"
-      href="#main-content"
-    >
+    <a className="absolute p-3 m-3 left-0 -translate-y-20 focus:translate-y-0 hidden" href="#main-content">
       Skip to Main Content
     </a>
-    <Flag />
-    <Navbar />
     { children }
-    <Footer />
     </body>
     </html>
   );

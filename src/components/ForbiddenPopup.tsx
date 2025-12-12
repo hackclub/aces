@@ -13,9 +13,7 @@ export default function ForbiddenPopup({
     }
   }, [isNotFound]);
 
-  if (!show) return null;
-
-  return (
+  return show && (
     <div
       className={
         "fixed inset-0 bg-black/50 flex justify-center items-center z-[1000]"
