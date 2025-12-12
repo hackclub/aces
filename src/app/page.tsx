@@ -29,7 +29,7 @@ export default function Home() {
     },
     {
       sum: "FOSS",
-      det: `Your game must be public on ${<a href='https://github.com'>GitHub</a>} (or another Git server). Include a clear license, I recommend the WTFPL!`,
+      det: `Your game must be public on GitHub (or another Git server). Include a clear license, I recommend the WTFPL!`,
     },
     {
       sum: "Shipped to itch.io or Steam",
