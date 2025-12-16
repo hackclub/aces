@@ -16,10 +16,6 @@ export default function Home() {
       det: "All non-programming assets must be created by humans",
     },
     {
-      sum: "40 hours logged",
-      det: "You must log at least 40 hours of work total covering both art and code.",
-    },
-    {
       sum: "≤ 30% AI code",
       det: "No more than 30% of the games code can be AI-Written. Write your own code!",
     },
@@ -29,10 +25,10 @@ export default function Home() {
     },
     {
       sum: "FOSS",
-      det: `Your game must be public on GitHub (or another Git server). Include a clear license, I recommend the WTFPL!`,
+      det: "Your game must be public on GitHub (or another Git server). Include a clear license, I recommend the WTFPL!",
     },
     {
-      sum: "Shipped to itch.io or Steam",
+      sum: "Published Game",
       det: "The built game must be published on itch.io or Steam!",
     },
   ];
@@ -44,17 +40,17 @@ export default function Home() {
     },
     { q: "When/Where is the IRL event?", a: "March 13-15 in DC." },
     {
-      q: "Can I still make a game if I cannot go IRL?",
+      q: "Can I still make a game if I cannot go?",
       a: "Yes. We will have a shop for other things for you to spend your hours on as well.",
     },
     {
       q: "How do travel stipends work?",
-      a: "For every hour not used towards the 40hr event invitation, you will gain currency. The currency will be spendable for flight stipends at a rate of $10/hr, among other prizes.",
+      a: "For every hour not used towards the event invitation, you will gain currency. The currency will be spendable for flight stipends at a rate of $10/hr, among other prizes.",
     },
     { q: "Do projects need to be open source?", a: "Yes." },
     {
       q: "Can you work in teams?",
-      a: "Yes, but each person must complete the 40hr requirement separately. For example, a team of two needs 80 hours total (40 for each person).",
+      a: "Yes, but each person must complete the ticket requirement separately",
     },
   ];
 
@@ -66,10 +62,10 @@ export default function Home() {
         <h1 className="sr-only">Ace Homepage</h1>
         <div className="w-full text-center self-center">
           <Image
-            src={"/aces_logo.svg"}
+            src={"/aces_new.png"}
             alt="Aces Logo"
-            width={0}
-            height={0}
+            width={1089}
+            height={644}
             style={{ width: "50%", height: "50%" }}
             className="mb-4 mx-auto"
           />
@@ -84,7 +80,7 @@ export default function Home() {
               href={"#learn-more"}  color={"rose"}>
               Learn More
             </Button>
-            <Button color={"red"} invert href={"/dashboard"}>
+            <Button color={"red"} invert href={"/dashboard/login"}>
               Login
             </Button>
           </div>
@@ -126,7 +122,7 @@ export default function Home() {
                   Create a{" "}
                   <span className={"text-rose-300 font-extrabold"}>
                     {" "}
-                    virtual card/board game in 40 hours...
+                    virtual card/board game...
                   </span>
                 </li>
                 <li>
@@ -189,9 +185,9 @@ export default function Home() {
                         openFaq === i ? "rotate-90" : ""
                       }`}
                     >
-                      <span className="block h-[2px] w-full bg-white" />
-                      <span className="block h-[2px] w-full bg-white" />
-                      <span className="block h-[2px] w-full bg-white" />
+                      <span className="block h-0.5 w-full bg-white" />
+                      <span className="block h-0.5 w-full bg-white" />
+                      <span className="block h-0.5 w-full bg-white" />
                     </span>
                   </summary>
                   <div
