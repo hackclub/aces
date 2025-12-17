@@ -10,7 +10,11 @@ type LoginResponse = {
 
 export default function LoginPage() {
 
+  const [emailButtonAllow, setEmailButtonAllow] = useState<boolean>(true)
+
   const otpOnClick = async () => {
+
+    setEmailButtonAllow(false)
 
     const email = (document.getElementById('email') as HTMLInputElement).value
 
@@ -19,6 +23,7 @@ export default function LoginPage() {
         className: "text-red-500 mb-4 text-center",
         message: "Please enter a valid email address."
       })
+      setEmailButtonAllow(true)
       return;
     } else {
       setMessage({
@@ -46,6 +51,7 @@ export default function LoginPage() {
         message: `An error occurred. Please try again. (code ${response.status})`
       })
     }
+    setEmailButtonAllow(true)
   }
 
   const router = useRouter()
@@ -60,29 +66,31 @@ export default function LoginPage() {
         message: "Please enter a valid 6-digit OTP."
       })
       return;
-    } else {
-      setMessage({
-        className: "hidden",
-        message: ""
-      })
     }
+    setMessage({
+      className: "hidden",
+      message: ""
+    })
 
     const otp = parseInt(otpStr)
 
-    const res = await fetch(apiUrl`api/v1/auth/validate_otp`, {
+    const response = await fetch(apiUrl`api/v1/auth/validate_otp`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, otp }),
+      credentials: 'include',
+      body: JSON.stringify({ email, otp })
     })
-
-    if (res.status === 200) {
+    const data = await response.json()
+    if (response.ok) {
       router.push('/dashboard')
-    } else if (res.status === 401) {
+    } else if (response.status == 401) {
       setMessage({
         className: "text-red-500 mb-4 text-center",
-        message: "Invalid OTP. Please try again."
+        message: "Wrong OTP. Please try again."
+      })
+    } else {
+      setMessage({
+        className: "text-red-500 mb-4 text-center",
+        message: data["detail"] || `An error occurred. Please try again. (code ${response.status})`
       })
     }
   }
@@ -109,6 +117,7 @@ export default function LoginPage() {
         />
         <button className="mt-4 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 w-full"
                 onClick={otpOnClick}
+                disabled={!emailButtonAllow}
         >
           Send OTP
         </button>
@@ -117,14 +126,14 @@ export default function LoginPage() {
         <input type="number"
                id="otp"
                name="otp"
-               className={"bg-gray-100 border-gray-400 text-gray-900 text-2xl text-center rounded-lg w-full [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-moz-appearance:textfield]"}
+               className={"bg-gray-100 border-gray-400 text-gray-900 text-2xl text-center rounded-lg w-full appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-moz-appearance:textfield]"}
                placeholder="674169"
 
         />
-        <button className="mt-4 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 w-full"
+        <button className="mt-4 px-4 py-2 bg-green-400 text-white rounded-lg hover:bg-green-300 w-full"
                 onClick={validateOnClick}
         >
-          Send OTP
+          Confirm
         </button>
       </div>
     </div>
