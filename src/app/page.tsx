@@ -80,7 +80,7 @@ export default function Home() {
               href={"#learn-more"}  color={"rose"}>
               Learn More
             </Button>
-            <Button color={"red"} invert href={"/dashboard/login"}>
+            <Button color={"red"} invert href={"/login"}>
               Login
             </Button>
           </div>
