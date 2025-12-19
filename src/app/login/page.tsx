@@ -1,6 +1,5 @@
 "use client"
 import { useState } from "react";
-import { apiUrl } from "@/utils";
 import { useRouter } from "next/navigation";
 
 type LoginResponse = {
@@ -76,7 +75,7 @@ export default function LoginPage() {
     setOtpButtonAllow(false)
 
     try {
-      const response = await fetch(apiUrl`api/v1/auth/validate_otp`, {
+      const response = await fetch('/api/dashboard/login', {
         method: 'POST',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
