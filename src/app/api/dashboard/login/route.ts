@@ -1,11 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { apiUrl } from "@/utils";
 
 export async function POST(req: NextRequest) {
   const data = await req.json();
   const { email, otp } = data;
 
-  const res = await fetch(apiUrl`api/v1/auth/validate_otp`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/validate_otp`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -26,8 +25,7 @@ export async function POST(req: NextRequest) {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       path: '/',
-      sameSite: 'strict'
-
+      sameSite: 'strict',
     });
   }
 
