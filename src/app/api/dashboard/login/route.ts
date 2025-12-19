@@ -24,8 +24,8 @@ export async function POST(req: NextRequest) {
       name: "sessionId",
       value: cookie,
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production'
-      path: '/'
+      secure: process.env.NODE_ENV === 'production',
+      path: '/',
       sameSite: 'strict'
 
     });
