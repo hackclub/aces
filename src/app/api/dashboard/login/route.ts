@@ -10,22 +10,30 @@ export async function POST(req: NextRequest) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, otp }),
+    credentials: "include",
   });
+
+  let cookie: string | null = null;
+
+  try {
+    const data = await res.json();
+    cookie = data?.sessionId ?? null;
+  } catch {
+    // ignore
+  }
 
   const response = new NextResponse(null, {
     status: res.status,
   });
-
-  const cookie = await res.json().then(data => data["sessionId"]).catch(() => null);
 
   if (cookie) {
     response.cookies.set({
       name: "sessionId",
       value: cookie,
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: true,
       path: '/',
-      sameSite: 'strict',
+      sameSite: 'none',
     });
   }
 

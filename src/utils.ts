@@ -1,1 +1,0 @@
-export const apiUrl = (s: TemplateStringsArray)=> process.env.NEXT_PUBLIC_API_URL! + s;
