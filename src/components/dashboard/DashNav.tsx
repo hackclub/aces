@@ -1,5 +1,4 @@
 import { FaHome, FaShoppingCart } from "react-icons/fa";
-import { TbCardsFilled } from "react-icons/tb";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { IconType } from "react-icons";
 
