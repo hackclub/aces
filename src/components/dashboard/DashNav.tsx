@@ -6,6 +6,7 @@ type DashItemProps = {
   href: string,
   Icon: IconType,
   label: string,
+  disabled?: boolean
 }
 
 function DashItem({href, Icon, label, disabled}: DashItemProps) {
