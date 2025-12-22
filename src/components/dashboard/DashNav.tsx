@@ -9,8 +9,8 @@ type DashItemProps = {
   label: string,
 }
 
-function DashItem({href, Icon, label}: DashItemProps) {
-  return (
+function DashItem({href, Icon, label, disabled}: DashItemProps) {
+  return !disabled && (
     <a href={href}>
       <div className="p-3 rounded-lg bg-red-400 text-white text-center hover:bg-red-500 hover:cursor-pointer transition-all inline-flex items-center justify-center text-xl md:text-2xl">
         <Icon className="mr-2" />
