@@ -27,8 +27,7 @@ export default function DashNav() {
     >
       <div className="flex items-center justify-around space-x-8 md:space-x-12">
         <DashItem href={"/dashboard"} Icon={FaHome} label={"Home"}/>
-        <DashItem href={"/dashboard/shop"} Icon={FaShoppingCart} label={"Shop"}/>
-        <DashItem href={"/dashboard/projects"} Icon={TbCardsFilled} label={"Projects"} />
+        <DashItem href={"/dashboard/shop"} Icon={FaShoppingCart} label={"Shop"} disabled/>
         <DashItem href={"/dashboard/explore"} Icon={FaMagnifyingGlass} label={"Explore"} />
       </div>
     </nav>
