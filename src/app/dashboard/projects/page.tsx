@@ -1,3 +1,3 @@
-export default function Page() {
-  return <div>Shop Dashboard Page</div>;
+export default function ExplorePage() {
+  return <div>Explore Projects Page</div>
 }

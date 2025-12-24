@@ -47,11 +47,13 @@ export default async function DashboardLayout({ children }: { children: ReactNod
   }
 
   return (
-    <div className="h-screen w-screen flex flex-col">
-      <div className="h-full w-full">
-        <UserProvider user={user}>
-          {children}
-        </UserProvider>
+    <div className="h-screen w-screen flex flex-col bg-[url(/bg_new.png)] bg-cover">
+      <div className="flex-1 p-4 pb-24 md:pb-32 lg:pb-40 overflow-auto">
+        <div className="bg-red-300/50 backdrop-blur-md rounded-lg shadow-lg p-6 min-h-full">
+          <UserProvider user={user}>
+            {children}
+          </UserProvider>
+        </div>
       </div>
       <DashNav />
     </div>
