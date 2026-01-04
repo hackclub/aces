@@ -64,14 +64,14 @@ export default function NewProjectPage() {
 
         <div>
           <label htmlFor="repo" className="block text-sm font-medium mb-1">
-            GitHub Repo URL
+           Repo URL
           </label>
           <input
             type="url"
             id="repo"
             name="repo"
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500"
-            placeholder="https://github.com/username/repo"
+            placeholder="https://github.com/orpheus/AwesomeCards"
           />
         </div>
 
