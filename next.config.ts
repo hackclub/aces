@@ -9,7 +9,11 @@ const nextConfig: NextConfig = {
 module.exports = {
 	images: {
 		remotePatterns: [
-			new URL('https://hc-cdn.hel1.your-objectstorage.com/**')
+			new URL('https://hc-cdn.hel1.your-objectstorage.com/**'),
+			{
+				hostname: 'https://ui-avatars.com/api/',
+				search: "?name=John+Doe"
+			}
 		],
 	},
 	async redirects() {
