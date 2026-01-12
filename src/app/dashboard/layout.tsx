@@ -56,6 +56,23 @@ export default async function DashboardLayout({ children }: { children: ReactNod
         </div>
       </div>
       <DashNav />
+      {/*
+      {!hide && user && (
+          <div className="fixed bottom-40 left-4 w-58 bg-white rounded-lg shadow-lg border border-gray-200 p-4 flex items-center gap-3 hover:shadow-xl transition-shadow">
+            <Image
+              src={`/shehasnoclueeither.png`} //TODO, figure out how to get slack pfps and render those
+              alt={user.username ?? "Profile Picture"}
+              width={64}
+              height={64}
+              className="w-24 h-24 rounded-full bg-gray-200 object-cover shrink-0"
+            />
+            <div className="flex flex-col min-w-0">
+              <p className="font-semibold text-gray-900 text-sm truncate">{user.username}</p>
+              <p className="text-xs text-gray-500 truncate">{user.email}</p>
+            </div>
+          </div>
+        )}
+      */}
     </div>
   );
 }
