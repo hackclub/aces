@@ -69,11 +69,11 @@ export default function Home() {
             style={{ width: "50%", height: "50%" }}
             className="mb-4 mx-auto"
           />
-          <p className="md:text-3xl text-lg text-white font-medium mb-5">
-            Build your own digital <strong>board/card game</strong>, get a{" "}
-            <strong>grant</strong> to make it real, and head to DC for{" "}
-            <strong>AwesomeCon</strong> to showcase it, then stay for an
-            in-person <strong>hackathon!</strong>
+          <p className="md:text-3xl text-lg text-white font-medium mb-6 leading-relaxed">
+            Build your own digital <strong className="font-bold">board/card game</strong>, get a{" "}
+            <strong className="font-bold">grant</strong> to make it real, and head to DC for{" "}
+            <strong className="font-bold">AwesomeCon</strong> to showcase it, then stay for an
+            in-person <strong className="font-bold">hackathon!</strong>
           </p>
           <div className="flex justify-center gap-x-4 no-underline">
             <Button
@@ -147,14 +147,14 @@ export default function Home() {
         id={"requirements"}
         className="container h-screen flex items-center justify-center p-5"
       >
-        <div className="w-full max-w-2xl bg-rose-800 p-6 text-white rounded-lg">
-          <h2 className="text-3xl text-white font-semibold mb-4">
+        <div className="w-full max-w-2xl bg-rose-800 p-8 text-white rounded-2xl shadow-2xl border-2 border-rose-700">
+          <h2 className="text-4xl text-white font-bold mb-6 tracking-tight">
             Requirements
           </h2>
-          <ul className="list-disc list-inside space-y-4">
+          <ul className="list-disc list-inside space-y-4 text-lg leading-relaxed">
             {reqItems.map((item, i) => (
-              <li key={i}>
-                <strong>{item.sum}</strong>: {item.det}
+              <li key={i} className="pl-2">
+                <strong className="font-bold">{item.sum}</strong>: {item.det}
               </li>
             ))}
           </ul>
@@ -164,11 +164,11 @@ export default function Home() {
         id={"faq"}
         className="container h-screen flex items-center justify-center p-5"
       >
-        <div className="w-full max-w-2xl p-6 bg-rose-800 rounded-lg text-white">
-          <h2 className="text-3xl font-semibold text-center mb-6">FAQ</h2>
-          <ul className="space-y-3">
+        <div className="w-full max-w-2xl p-8 bg-rose-800 rounded-2xl text-white shadow-2xl border-2 border-rose-700">
+          <h2 className="text-4xl font-bold text-center mb-8 tracking-tight">FAQ</h2>
+          <ul className="space-y-4">
             {faqItems.map((item, i) => (
-              <li key={i} className="border-b border-white/10 pb-3">
+              <li key={i} className="border-b border-white/20 pb-4">
                 <details open={openFaq === i} className="group">
                   <summary
                     onClick={(e) => {
@@ -177,9 +177,9 @@ export default function Home() {
                     }}
                     aria-expanded={openFaq === i}
                     aria-controls={`faq-${i}`}
-                    className="list-none w-full flex items-center justify-between text-left py-2 cursor-pointer focus:outline-none"
+                    className="list-none w-full flex items-center justify-between text-left py-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-rose-300 rounded-lg px-2"
                   >
-                    <span className="font-bold">{item.q}</span>
+                    <span className="font-bold text-lg">{item.q}</span>
                     <span
                       className={`flex flex-col gap-1 w-5 h-5 transition-transform ${
                         openFaq === i ? "rotate-90" : ""
@@ -192,13 +192,13 @@ export default function Home() {
                   </summary>
                   <div
                     id={`faq-${i}`}
-                    className={`ml-6 mt-2 text-sm transition-all overflow-hidden ${
+                    className={`ml-6 mt-3 transition-all overflow-hidden ${
                       openFaq === i
                         ? "max-h-96 opacity-100"
                         : "max-h-0 opacity-0"
                     }`}
                   >
-                    <p className={"text-lg"}>{item.a}</p>
+                    <p className={"text-lg leading-relaxed"}>{item.a}</p>
                   </div>
                 </details>
               </li>

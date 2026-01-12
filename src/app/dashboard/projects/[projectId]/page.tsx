@@ -66,10 +66,13 @@ export default async function ProjectPage({
 
   if (!project) {
     return (
-      <div className="text-center py-12">
-        <h1 className="text-2xl font-bold mb-4">Project not found</h1>
-        <Link href="/dashboard" className="text-rose-700 hover:underline">
-          Back to Dashboard
+      <div className="text-center py-16">
+        <h1 className="text-3xl font-bold mb-6 text-gray-900">Project not found</h1>
+        <Link 
+          href="/dashboard" 
+          className="text-rose-700 hover:text-rose-800 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-rose-500 rounded px-2 py-1"
+        >
+          &larr; Back to Dashboard
         </Link>
       </div>
     );
@@ -79,12 +82,12 @@ export default async function ProjectPage({
     <div className="max-w-4xl mx-auto">
       <Link
         href="/dashboard"
-        className="text-rose-700 hover:underline text-sm mb-4 inline-block"
+        className="text-rose-700 hover:text-rose-800 font-semibold mb-6 inline-block transition-colors focus:outline-none focus:ring-2 focus:ring-rose-500 rounded px-2 py-1"
       >
         &larr; Back to Projects
       </Link>
 
-      <div className="bg-white rounded-lg shadow-sm border overflow-hidden mb-6">
+      <div className="bg-white rounded-xl shadow-lg border-2 border-gray-200 overflow-hidden mb-8">
         {project.preview_image && (
           <Image
             src={project.preview_image}
@@ -94,28 +97,28 @@ export default async function ProjectPage({
             className="w-full h-48 object-cover"
           />
         )}
-        <div className="p-6">
-          <div className="flex items-start justify-between mb-4">
+        <div className="p-8">
+          <div className="flex items-start justify-between mb-6">
             <div>
-              <h1 className="text-3xl font-bold">{project.project_name}</h1>
-              <p className="text-gray-600 mt-1">
+              <h1 className="text-4xl font-bold text-gray-900 tracking-tight">{project.project_name}</h1>
+              <p className="text-gray-600 mt-2 text-lg font-medium">
                 {project.hackatime_total_hours.toFixed(1)} hours logged
               </p>
             </div>
             {project.shipped && (
-              <span className="bg-green-500 text-white text-sm px-3 py-1 rounded">
+              <span className="bg-emerald-500 text-white text-sm font-semibold px-4 py-2 rounded-full shadow-md">
                 Shipped
               </span>
             )}
           </div>
 
-          <div className="flex flex-wrap gap-3 mt-4">
+          <div className="flex flex-wrap gap-3 mt-6">
             {project.repo && (
               <a
                 href={project.repo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-sm transition-colors"
+                className="px-5 py-2.5 bg-gray-100 hover:bg-gray-200 rounded-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 shadow-sm hover:shadow-md"
               >
                 View Repo
               </a>
@@ -125,7 +128,7 @@ export default async function ProjectPage({
                 href={project.demo_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 bg-rose-700 hover:bg-rose-800 text-white rounded-lg text-sm transition-colors"
+                className="px-5 py-2.5 bg-rose-700 hover:bg-rose-800 text-white rounded-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 shadow-md hover:shadow-lg"
               >
                 View Demo
               </a>
@@ -133,13 +136,13 @@ export default async function ProjectPage({
           </div>
 
           {project.hackatime_projects.length > 0 && (
-            <div className="mt-4 pt-4 border-t">
-              <p className="text-sm text-gray-500">Linked Hackatime projects:</p>
-              <div className="flex flex-wrap gap-2 mt-2">
+            <div className="mt-6 pt-6 border-t-2 border-gray-100">
+              <p className="text-sm font-semibold text-gray-600 mb-3">Linked Hackatime projects:</p>
+              <div className="flex flex-wrap gap-2">
                 {project.hackatime_projects.map((hp) => (
                   <span
                     key={hp}
-                    className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded"
+                    className="bg-gray-100 text-gray-700 text-sm font-medium px-3 py-1.5 rounded-lg border border-gray-200"
                   >
                     {hp}
                   </span>
@@ -151,12 +154,23 @@ export default async function ProjectPage({
       </div>
 
       <div>
-        <h2 className="text-xl font-bold mb-4">Devlogs</h2>
-        <div className="space-y-4">
+        <div className="flex items-center gap-3 mb-6">
+          <h2 className="text-3xl font-bold text-gray-900 tracking-tight">Cash Outs</h2>
+          <span className="px-3.5 py-1.5 bg-rose-100 text-rose-700 rounded-full text-sm font-bold border border-rose-200">
+            {devlogs.length}
+          </span>
+        </div>
+        <div className="space-y-5">
           <CreateDevlog projectId={project.project_id} />
           {devlogs.length === 0 ? (
-            <div className="bg-white rounded-lg shadow-sm border p-6 text-center text-gray-500">
-              No devlogs yet
+            <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl border-2 border-dashed border-gray-300 p-12 text-center">
+              <div className="text-gray-400 mb-3">
+                <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+              <p className="text-gray-700 font-semibold text-lg">No cash outs yet</p>
+              <p className="text-gray-500 mt-2">Submit your first cash out to earn cards!</p>
             </div>
           ) : (
             devlogs.map((devlog) => (

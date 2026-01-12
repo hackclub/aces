@@ -22,21 +22,25 @@ export default function Footer() {
 	}, []);
 
   return (
-    <footer className="w-full text-center bg-rose-800 p-5 text-white flex flex-col items-center justify-center">
-      <p className="md:text-lg text-md">
+    <footer className="w-full text-center bg-rose-800 p-6 text-white flex flex-col items-center justify-center gap-3 border-t-2 border-rose-700">
+      <p className="md:text-lg text-md leading-relaxed">
         Made with love by Hack Club. Check out our{" "}
-        <a className="text-rose-200" href="https://github.com/hackclub/aces">
+        <a className="text-rose-200 hover:text-rose-100 underline transition-colors focus:outline-none focus:ring-2 focus:ring-rose-300 rounded px-1" href="https://github.com/hackclub/aces">
           GitHub
         </a>
         , and the{" "}
-        <a className="text-rose-200" href="https://hackclub.com/slack">
+        <a className="text-rose-200 hover:text-rose-100 underline transition-colors focus:outline-none focus:ring-2 focus:ring-rose-300 rounded px-1" href="https://hackclub.com/slack">
           Hack Club Slack
         </a>
         .
       </p>
-      <div className={"flex flex-row align-center content-center"}>
-        <TbGitCommit className={"self-center justify-center text-rose-200"}/>
-        <a href={`https://github.com/hackclub/aces/commit/${commit.hash}`} className={"self-center justify-center text-rose-200"}>
+      <div className={"flex flex-row items-center gap-2"}>
+        <TbGitCommit className={"text-rose-200"} aria-hidden="true" />
+        <a 
+          href={`https://github.com/hackclub/aces/commit/${commit.hash}`} 
+          className={"text-rose-200 hover:text-rose-100 transition-colors focus:outline-none focus:ring-2 focus:ring-rose-300 rounded px-1 text-sm"}
+          aria-label={`View commit: ${commit.message}`}
+        >
           {commit.hash}: {commit.message}
         </a>
       </div>

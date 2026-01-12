@@ -1,6 +1,8 @@
 import { ReactNode } from "react";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
 import DashNav from "@/components/dashboard/DashNav";
 import UserProvider from "@/app/dashboard/UserProvider";
 
@@ -11,9 +13,9 @@ export type User = {
   hackatime_id: number
   permissions: string[]
   marked_for_deletion: boolean
-} | null
+}
 
-async function getUser(): Promise<User> {
+async function getUser(): Promise<User | null> {
   const cookieStore = await cookies();
   const sessionId = cookieStore.get("sessionId")?.value;
 
@@ -46,10 +48,17 @@ export default async function DashboardLayout({ children }: { children: ReactNod
     redirect("/login");
   }
 
+  const headersList = await headers()
+  const pathname = headersList.get('x-pathname')
+    ?? headersList.get('x-invoke-path')
+    ?? ''
+
+  const hide = pathname === '/dashboard/profile'
+
   return (
     <div className="h-screen w-screen flex flex-col bg-[url(/bg_new.png)] bg-cover relative">
       <div className="flex-1 p-4 pb-24 md:pb-32 lg:pb-40 overflow-auto">
-        <div className="bg-red-300/50 backdrop-blur-md rounded-lg shadow-lg p-6 min-h-full">
+        <div className="bg-red-300/60 backdrop-blur-md rounded-2xl shadow-xl p-8 min-h-full border-2 border-red-400/30">
           <UserProvider user={user}>
             {children}
           </UserProvider>

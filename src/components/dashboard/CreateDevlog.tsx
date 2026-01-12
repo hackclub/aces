@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function CreateDevlog({ projectId }: { projectId: number }) {
@@ -29,8 +29,8 @@ export default function CreateDevlog({ projectId }: { projectId: number }) {
       });
 
       if (!res.ok) {
-        const err = await res.text();
-        throw new Error(err || "Failed to create devlog");
+        const err = await res.json();
+        throw new Error(err.detail || "Failed to create cash out");
       }
 
       setOpen(false);
@@ -46,61 +46,76 @@ export default function CreateDevlog({ projectId }: { projectId: number }) {
     return (
       <button
         onClick={() => setOpen(true)}
-        className="w-full py-3 border-2 border-dashed border-gray-300 hover:border-gray-400 rounded-lg text-gray-600 hover:text-gray-800 transition-colors"
+        className="group w-full py-5 border-2 border-dashed border-rose-300 hover:border-rose-500 rounded-xl text-rose-600 hover:text-rose-700 transition-all duration-200 font-semibold bg-gradient-to-br from-rose-50/50 to-purple-50/50 hover:from-rose-100/50 hover:to-purple-100/50 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2"
+        aria-label="Submit new cash out"
       >
-        + Add Devlog
+        <span className="inline-flex items-center gap-2 text-lg">
+          <svg className="w-6 h-6 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+          </svg>
+          Submit Cash Out
+        </span>
       </button>
     );
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border p-4">
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-xl border-2 border-gray-200 p-8">
+      <h3 className="text-2xl font-bold text-gray-900 mb-6 tracking-tight">Submit Cash Out</h3>
+      <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label htmlFor="content" className="block text-sm font-medium mb-1">
+          <label htmlFor="content" className="block text-sm font-semibold text-gray-700 mb-2">
             What did you work on?
+            <span className="text-rose-600 ml-1">*</span>
           </label>
           <textarea
             id="content"
             name="content"
             required
-            rows={3}
+            rows={4}
             maxLength={1000}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500 resize-none"
+            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent resize-none transition-all"
             placeholder="Describe your progress..."
           />
         </div>
 
         <div>
-          <label htmlFor="media_url" className="block text-sm font-medium mb-1">
-            Media URL
+          <label htmlFor="media_url" className="block text-sm font-semibold text-gray-700 mb-2">
+            Media URL (screenshot/demo)
+            <span className="text-rose-600 ml-1">*</span>
           </label>
           <input
             type="url"
             id="media_url"
             name="media_url"
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500"
+            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all"
             placeholder="https://hc-cdn.hel1.your-objectstorage.com/..."
           />
+          <p className="mt-2 text-xs text-gray-500">Must be hosted on Hack Club CDN</p>
         </div>
 
-        {error && <p className="text-red-600 text-sm">{error}</p>}
+        {error && (
+          <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+            <p className="text-red-700 text-sm font-medium">{error}</p>
+          </div>
+        )}
 
-        <div className="flex gap-3">
+        <div className="flex gap-4 pt-2">
           <button
             type="button"
             onClick={() => setOpen(false)}
-            className="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-100 transition-colors"
+            className="flex-1 px-6 py-3 rounded-lg border-2 border-gray-300 hover:bg-gray-50 transition-all duration-200 font-semibold text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
           >
             Cancel
           </button>
           <button
             type="submit"
             disabled={loading}
-            className="px-4 py-2 rounded-lg bg-rose-700 text-white hover:bg-rose-800 transition-colors disabled:opacity-50"
+            className="flex-1 px-6 py-3 rounded-lg bg-gradient-to-r from-rose-600 to-rose-700 text-white hover:from-rose-700 hover:to-rose-800 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed font-semibold shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2"
+            aria-busy={loading}
           >
-            {loading ? "Posting..." : "Post Devlog"}
+            {loading ? "Submitting..." : "Submit for Review"}
           </button>
         </div>
       </form>
