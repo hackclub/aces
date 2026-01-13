@@ -1,8 +1,6 @@
 import { ReactNode } from "react";
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
-import Link from "next/link";
-import Image from "next/image";
 import DashNav from "@/components/dashboard/DashNav";
 import UserProvider from "@/app/dashboard/UserProvider";
 
@@ -13,7 +11,7 @@ export type User = {
   hackatime_id: number
   permissions: string[]
   marked_for_deletion: boolean
-}
+} | null
 
 async function getUser(): Promise<User | null> {
   const cookieStore = await cookies();
@@ -52,8 +50,6 @@ export default async function DashboardLayout({ children }: { children: ReactNod
   const pathname = headersList.get('x-pathname')
     ?? headersList.get('x-invoke-path')
     ?? ''
-
-  const hide = pathname === '/dashboard/profile'
 
   return (
     <div className="h-screen w-screen flex flex-col bg-[url(/bg_new.png)] bg-cover relative">
