@@ -25,6 +25,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           alt={project.project_name}
           width={400}
           height={200}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="w-full h-40 object-cover"
         />
         
