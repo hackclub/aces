@@ -4,7 +4,7 @@ import React from "react";
 const description =
   "Build a virtual card/board game, get a grant to build it and be flown out to Washington DC!";
 const imgUrl =
-  "https://hc-cdn.hel1.your-objectstorage.com/s/v3/eebc0c7066b9dc929edd54bf1ccec847c6fbd120_aces.png";
+  "/aces_new_png";
 
 const Meta = () => (
   <>
