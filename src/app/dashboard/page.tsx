@@ -59,7 +59,7 @@ export default async function Page() {
           className="group focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 rounded-xl"
           aria-label="Create new project"
         >
-          <div className="rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-gray-50 to-white h-full min-h-[200px] flex items-center justify-center cursor-pointer border-2 border-dashed border-gray-300 hover:border-rose-400 group-hover:-translate-y-1">
+          <div className="rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-gray-50 to-white h-full min-h-[180px] flex items-center justify-center cursor-pointer border-2 border-dashed border-gray-300 hover:border-rose-400 group-hover:-translate-y-1">
             <div className="text-center p-6">
               <span className="text-5xl text-rose-400 group-hover:text-rose-500 transition-colors block mb-3" aria-hidden="true">+</span>
               <p className="text-gray-700 font-semibold text-lg group-hover:text-rose-600 transition-colors">New Project</p>

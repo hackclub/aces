@@ -88,12 +88,12 @@ export default function DevlogCard({ devlog }: { devlog: Devlog }) {
         <p className="text-gray-900 leading-relaxed mb-5 font-medium text-lg">{devlog.content}</p>
         
         {devlog.media_url && (
-          <div className="relative rounded-xl overflow-hidden border-2 border-gray-200 shadow-md bg-gray-50 flex items-center justify-center" style={{ height: '256px' }}>
+          <div className="relative rounded-xl overflow-hidden border-2 border-gray-200 shadow-md bg-gray-50 flex items-center justify-center" style={{ height: '200px' }}>
             <Image
               src={devlog.media_url}
               alt="Cash Out media"
-              width={256}
-              height={256}
+              width={200}
+              height={200}
               className="max-w-full max-h-full object-contain"
             />
           </div>

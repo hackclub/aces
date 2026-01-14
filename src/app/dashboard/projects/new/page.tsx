@@ -29,8 +29,8 @@ export default function NewProjectPage() {
       });
 
       if (!res.ok) {
-        const err = await res.text();
-        throw new Error(err || "Failed to create project");
+        const err = await res.json();
+        throw new Error(err.detail || "Failed to create project");
       }
 
       router.push("/dashboard");

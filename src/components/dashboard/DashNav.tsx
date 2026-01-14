@@ -36,7 +36,7 @@ export default function DashNav() {
         <DashItem href={"/dashboard"} Icon={FaHome} label={"Home"}/>
         <DashItem href={"/dashboard/shop"} Icon={FaShoppingCart} label={"Shop"} disabled/>
         {/*TODO: remove when shop is live*/}
-        <DashItem href={"/dashboard/projects"} Icon={FaMagnifyingGlass} label={"Explore"} />
+        <DashItem href={"/dashboard/projects"} Icon={FaMagnifyingGlass} label={"Explore"} disabled />
       </div>
     </nav>
   );

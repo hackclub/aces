@@ -26,9 +26,9 @@ export default function ProjectDetailsClient({ project }: { project: Project }) 
           <Image
             src={project.preview_image}
             alt={project.project_name}
-            width={800}
-            height={300}
-            className="w-full h-48 object-cover"
+            width={600}
+            height={225}
+            className="w-full h-36 object-cover"
           />
         )}
         <div className="p-8">

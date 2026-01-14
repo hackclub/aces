@@ -24,9 +24,9 @@ export default function ProjectCard({ project }: { project: Project }) {
         <Image
           src={imageSrc}
           alt={project.project_name}
-          width={800}
-          height={400}
-          className="w-full h-48 object-cover"
+          width={400}
+          height={200}
+          className="w-full h-40 object-cover"
         />
         <div className="p-4 bg-white">
           <div className="flex items-center justify-between mb-2">
