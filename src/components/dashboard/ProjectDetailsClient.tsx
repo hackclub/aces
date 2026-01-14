@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+
 import EditProject from "./EditProject";
 
 type Project = {
@@ -13,6 +13,7 @@ type Project = {
   repo: string | null;
   demo_url: string | null;
   preview_image: string | null;
+  description: string | null;
   shipped: boolean;
 };
 
@@ -23,23 +24,27 @@ export default function ProjectDetailsClient({ project }: { project: Project }) 
     <>
       <div className="bg-white rounded-xl shadow-lg border-2 border-gray-200 overflow-hidden mb-8">
         {project.preview_image && (
-          <Image
+          /* eslint-disable-next-line @next/next/no-img-element */
+          <img
             src={project.preview_image}
             alt={project.project_name}
-            width={600}
-            height={225}
             className="w-full h-36 object-cover"
           />
         )}
         <div className="p-8">
           <div className="flex items-start justify-between mb-6">
-            <div>
+            <div className="flex-1">
               <h1 className="text-4xl font-bold text-gray-900 tracking-tight">
                 {project.project_name}
               </h1>
               <p className="text-gray-600 mt-2 text-lg font-medium">
                 {project.hackatime_total_hours.toFixed(1)} hours logged
               </p>
+              {project.description && (
+                <p className="text-gray-700 mt-4 text-base leading-relaxed">
+                  {project.description}
+                </p>
+              )}
             </div>
             <div className="flex items-center gap-3">
               {project.shipped && (
@@ -116,6 +121,7 @@ export default function ProjectDetailsClient({ project }: { project: Project }) 
             repo: project.repo || "",
             demo_url: project.demo_url || "",
             preview_image: project.preview_image || "",
+            description: project.description || "",
             hackatime_projects: project.hackatime_projects,
           }}
           onCancel={() => setIsEditing(false)}
