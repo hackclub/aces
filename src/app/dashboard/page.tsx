@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import Link from "next/link";
 import ProjectCard from "@/components/dashboard/ProjectCard";
+import CardsProgressBar from "@/components/dashboard/CardsProgressBar";
 
 export type Project = {
   project_id: number;
@@ -52,17 +53,20 @@ export default async function Page() {
 
   return (
     <div>
-      <h1 className="text-4xl font-bold mb-8 text-gray-900 tracking-tight">My Projects</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <h1 className="text-6xl font-black mb-6 text-gray-900 tracking-tighter drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)] font-[family-name:var(--font-righteous)]">
+        My Projects
+      </h1>
+      <CardsProgressBar />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         <Link 
           href="/dashboard/projects/new"
-          className="group focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 rounded-xl"
+          className="group focus:outline-none focus:ring-4 focus:ring-[#DC143C] focus:ring-offset-2 rounded-2xl"
           aria-label="Create new project"
         >
-          <div className="rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-gray-50 to-white h-full min-h-[180px] flex items-center justify-center cursor-pointer border-2 border-dashed border-gray-300 hover:border-rose-400 group-hover:-translate-y-1">
-            <div className="text-center p-6">
-              <span className="text-5xl text-rose-400 group-hover:text-rose-500 transition-colors block mb-3" aria-hidden="true">+</span>
-              <p className="text-gray-700 font-semibold text-lg group-hover:text-rose-600 transition-colors">New Project</p>
+          <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-200 bg-linear-to-br from-gray-50 via-white to-gray-100 h-full min-h-[200px] flex items-center justify-center cursor-pointer border-3 border-dashed border-gray-300 hover:border-[#DC143C]">
+            <div className="text-center p-5">
+              <span className="text-5xl text-[#DC143C] group-hover:text-[#FFD700] transition-colors block mb-2" aria-hidden="true">+</span>
+              <p className="text-gray-900 font-black text-lg group-hover:text-[#DC143C] transition-colors tracking-tight">New Project</p>
             </div>
           </div>
         </Link>

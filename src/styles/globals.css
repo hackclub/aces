@@ -4,38 +4,59 @@
     transform: rotate(0.03turn) scale(1.2) translateY(-4px);
     transition: transform 0.1s;
 }
+
 :root{
     --safe-top: env(safe-area-inset-top);
     --safe-bottom: env(safe-area-inset-bottom);
     --content-max: 1200px;
     --card: #840027;
+    --primary-crimson: #DC143C;
+    --dark-wine: #590019;
+    --electric-gold: #FFD700;
+    --deep-navy: #0F1419;
+    --surface-frost: rgba(255, 255, 255, 0.95);
 }
-html,body{height:100%;margin:0;-webkit-font-smoothing:antialiased;}
+
+html,body{
+    height:100%;
+    margin:0;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+}
+
 body{
     padding-top: var(--safe-top);
     padding-bottom: var(--safe-bottom);
     margin:0;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    font-family: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
     font-size: clamp(16px, 2.5vw, 18px);
-    line-height:1.45;
+    line-height:1.55;
     -webkit-text-size-adjust:100%;
+    font-weight: 400;
 }
+
 .container{
     max-width: var(--content-max);
     margin:0 auto;
-    padding: 0 16px;
+    padding: 0 12px;
     box-sizing:border-box;
 }
+
 img, video, canvas { max-width:100%; height:auto; display:block; }
 a, button { touch-action: manipulation; -webkit-tap-highlight-color: rgba(0,0,0,0); text-decoration: underline; }
 main a, main button { text-decoration: none; }
-.button, button { min-height:44px; min-width:44px; padding: 10px 16px; border-radius:6px; }
-/* responsive grid example */
+.button, button { min-height:44px; min-width:44px; padding: 8px 12px; border-radius:6px; }
+
 .grid{ display:grid; grid-template-columns: 1fr; gap:16px; }
 @media(min-width:720px){ .grid{ grid-template-columns: repeat(2,1fr); } }
 @media(min-width:1024px){ .grid{ grid-template-columns: repeat(3,1fr); } }
-/* helper for safe-area aware header/footer */
+
 .header, .footer { padding-top: calc(12px + var(--safe-top)); padding-bottom: calc(12px + var(--safe-bottom)); }
-/* hover tilt for hero/info card */
+
 #learn-more button { transition-duration: 0.35s; padding: 0; }
-.button-tilt:hover { transform: rotate(1deg) scale(1.02) translateY(-18px) translateX(2px); transition-duration: 0.35s; }
+.button-tilt:hover { 
+    transform: rotate(1deg) scale(1.02) translateY(-18px) translateX(2px); 
+    transition-duration: 0.35s;
+    filter: drop-shadow(0 12px 24px rgba(220, 20, 60, 0.4));
+}
+

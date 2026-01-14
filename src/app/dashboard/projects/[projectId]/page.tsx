@@ -80,13 +80,6 @@ export default async function ProjectPage({
 
   return (
     <div className="max-w-4xl mx-auto">
-      <Link
-        href="/dashboard"
-        className="text-rose-700 hover:text-rose-800 font-semibold mb-6 inline-block transition-colors focus:outline-none focus:ring-2 focus:ring-rose-500 rounded px-2 py-1"
-      >
-        &larr; Back to Projects
-      </Link>
-
       <ProjectDetailsClient project={project} />
 
       <div>

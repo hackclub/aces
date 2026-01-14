@@ -78,6 +78,15 @@ export default function ProjectDetailsClient({ project }: { project: Project }) 
               </a>
             )}
           </div>
+          
+          <div className="mt-6">
+            <a
+              href="/dashboard"
+              className="text-rose-600 hover:text-rose-700 font-medium transition-colors underline focus:outline-none focus:ring-2 focus:ring-rose-500 rounded px-1"
+            >
+              &larr; Back to Projects
+            </a>
+          </div>
 
           {project.hackatime_projects.length > 0 && (
             <div className="mt-6 pt-6 border-t-2 border-gray-100">

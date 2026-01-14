@@ -35,22 +35,26 @@ export default function Home() {
 
   const faqItems = [
     {
-      q: "Do we need Hackatime? Can we track Art?",
-      a: "Yes, you need Hackatime. We are currently discussing the best solution to offer time tracking for art, but it will be allowed.",
+      q: "How do I earn cards?",
+      a: "Earn cards by completing tasks and purchases through our shop system. Log your hours with Hackatime to track progress and earn rewards.",
+    },
+    {
+      q: "How do I get a ticket to The Deck?",
+      a: "Earn enough cards through the shop system to purchase your ticket. Cards can be earned by working on your game, completing challenges, and other activities.",
     },
     { q: "When/Where is the IRL event?", a: "March 13-15 in DC." },
     {
       q: "Can I still make a game if I cannot go?",
-      a: "Yes. We will have a shop for other things for you to spend your hours on as well.",
+      a: "Yes! You can spend your cards in our shop on other prizes and rewards even if you can't attend the event.",
     },
     {
       q: "How do travel stipends work?",
-      a: "For every hour not used towards the event invitation, you will gain currency. The currency will be spendable for flight stipends at a rate of $10/hr, among other prizes.",
+      a: "Cards can be spent on flight stipends and other prizes through our shop at various rates.",
     },
     { q: "Do projects need to be open source?", a: "Yes." },
     {
       q: "Can you work in teams?",
-      a: "Yes, but each person must complete the ticket requirement separately",
+      a: "Yes, but each person must earn their ticket separately through the shop system.",
     },
   ];
 
@@ -70,10 +74,10 @@ export default function Home() {
             className="mb-4 mx-auto"
           />
           <p className="md:text-3xl text-lg text-white font-medium mb-6 leading-relaxed">
-            Build your own digital <strong className="font-bold">board/card game</strong>, get a{" "}
-            <strong className="font-bold">grant</strong> to make it real, and head to DC for{" "}
-            <strong className="font-bold">AwesomeCon</strong> to showcase it, then stay for an
-            in-person <strong className="font-bold">hackathon!</strong>
+            Build your own digital <strong className="font-bold">board/card game</strong>, earn{" "}
+            <strong className="font-bold">cards through our shop</strong> to get your{" "}
+            <strong className="font-bold">ticket to The Deck</strong> - a 48 hour hackathon in Washington DC during{" "}
+            <strong className="font-bold">AwesomeCon!</strong>
           </p>
           <div className="flex justify-center gap-x-4 no-underline">
             <Button
@@ -126,13 +130,13 @@ export default function Home() {
                   </span>
                 </li>
                 <li>
-                  Get a grant to{" "}
+                  Earn cards through{" "}
                   <span className={"text-rose-300 font-extrabold"}>
-                    make your game for real...
+                    our shop system...
                   </span>
                 </li>
                 <li>
-                  And get invited to{" "}
+                  Get your ticket to{" "}
                   <span className={"text-rose-300 font-extrabold"}>
                     The Deck
                   </span>
@@ -147,8 +151,8 @@ export default function Home() {
         id={"requirements"}
         className="container h-screen flex items-center justify-center p-5"
       >
-        <div className="w-full max-w-2xl bg-rose-800 p-8 text-white rounded-2xl shadow-2xl border-2 border-rose-700">
-          <h2 className="text-4xl text-white font-bold mb-6 tracking-tight">
+        <div className="w-full max-w-2xl bg-rose-800 p-6 text-white rounded-2xl shadow-2xl border-2 border-rose-700">
+          <h2 className="text-3xl text-white font-bold mb-5 tracking-tight">
             Requirements
           </h2>
           <ul className="list-disc list-inside space-y-4 text-lg leading-relaxed">
@@ -164,8 +168,8 @@ export default function Home() {
         id={"faq"}
         className="container h-screen flex items-center justify-center p-5"
       >
-        <div className="w-full max-w-2xl p-8 bg-rose-800 rounded-2xl text-white shadow-2xl border-2 border-rose-700">
-          <h2 className="text-4xl font-bold text-center mb-8 tracking-tight">FAQ</h2>
+        <div className="w-full max-w-2xl p-6 bg-rose-800 rounded-2xl text-white shadow-2xl border-2 border-rose-700">
+          <h2 className="text-3xl font-bold text-center mb-6 tracking-tight">FAQ</h2>
           <ul className="space-y-4">
             {faqItems.map((item, i) => (
               <li key={i} className="border-b border-white/20 pb-4">

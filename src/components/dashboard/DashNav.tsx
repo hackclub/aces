@@ -13,13 +13,13 @@ function DashItem({href, Icon, label, disabled}: DashItemProps) {
   return (
     <a 
       href={!disabled ? href : undefined} 
-      className={disabled ? "pointer-events-none" : ""}
+      className={disabled ? "pointer-events-none" : "group"}
       aria-disabled={disabled}
       aria-label={label}
     >
-      <div className={"p-3 rounded-lg bg-red-400 text-white text-center hover:bg-red-500 transition-all inline-flex items-center justify-center text-xl md:text-2xl focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 shadow-md hover:shadow-lg" + (disabled ? " opacity-50 cursor-not-allowed hover:bg-red-400" : " hover:cursor-pointer")}>
-        <Icon className="mr-2" aria-hidden="true" />
-        <span className="font-semibold">{label}</span>
+      <div className={"px-5 py-3 rounded-2xl bg-gradient-to-br from-[#DC143C] to-[#8B0000] text-white text-center transition-all inline-flex items-center justify-center text-lg md:text-xl focus:outline-none focus:ring-4 focus:ring-[#FFD700] focus:ring-offset-2 shadow-lg font-black tracking-wide" + (disabled ? " opacity-40 cursor-not-allowed" : " hover:cursor-pointer hover:shadow-xl")}>
+        <Icon className="mr-3" aria-hidden="true" />
+        <span>{label}</span>
       </div>
     </a>
   )
@@ -28,14 +28,13 @@ function DashItem({href, Icon, label, disabled}: DashItemProps) {
 export default function DashNav() {
   return (
     <nav
-      className="fixed bottom-0 left-0 right-0 z-50 bg-red-300 h-2/15 flex items-center justify-center px-8 shadow-lg border-t-2 border-red-400"
+      className="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-t from-[#0F1419] via-[#590019] to-transparent backdrop-blur-xl h-2/15 flex items-center justify-center px-6 shadow-[0_-8px_32px_rgba(0,0,0,0.3)] border-t-3 border-[#DC143C]"
       role="navigation"
       aria-label="Dashboard navigation"
     >
-      <div className="flex items-center justify-around space-x-8 md:space-x-12">
+      <div className="flex items-center justify-around space-x-4 md:space-x-12">
         <DashItem href={"/dashboard"} Icon={FaHome} label={"Home"}/>
         <DashItem href={"/dashboard/shop"} Icon={FaShoppingCart} label={"Shop"} disabled/>
-        {/*TODO: remove when shop is live*/}
         <DashItem href={"/dashboard/projects"} Icon={FaMagnifyingGlass} label={"Explore"} disabled />
       </div>
     </nav>

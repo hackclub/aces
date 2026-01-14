@@ -7,17 +7,16 @@ export default function ProjectCard({ project }: { project: Project }) {
   const imageSrc = project.preview_image || "/shehasnoclueeither.png";
   const suits = ["♠", "♥", "♦", "♣"];
   const suit = suits[project.project_id % suits.length];
-  const suitColor = suit === "♥" || suit === "♦" ? "text-rose-600" : "text-gray-800";
+  const suitColor = suit === "♥" || suit === "♦" ? "text-[#DC143C]" : "text-gray-900";
 
   return (
     <Link 
       href={`/dashboard/projects/${project.project_id}`}
       aria-label={`View project: ${project.project_name}`}
-      className="group focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 rounded-xl"
+      className="group focus:outline-none focus:ring-4 focus:ring-[#DC143C] focus:ring-offset-2 rounded-2xl"
     >
-      <div className="relative rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 bg-white border-2 border-gray-200 hover:border-rose-300 hover:-translate-y-1">
-        {/* Card corner pip */}
-        <div className={`absolute top-2 left-2 z-10 ${suitColor} font-bold text-sm bg-white/90 backdrop-blur-sm px-2 py-1 rounded`}>
+      <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-200 bg-white border-3 border-gray-200 hover:border-[#DC143C]">
+        <div className={`absolute top-2 left-2 z-10 ${suitColor} font-black text-xl bg-white/95 backdrop-blur-md px-2 py-1 rounded-lg shadow-lg`}>
           {suit}
         </div>
         
@@ -28,24 +27,24 @@ export default function ProjectCard({ project }: { project: Project }) {
           height={200}
           className="w-full h-40 object-cover"
         />
-        <div className="p-4 bg-white">
+        
+        <div className="p-3 bg-gradient-to-br from-white to-gray-50">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="text-xl font-semibold text-gray-900 group-hover:text-rose-700 transition-colors">
+            <h3 className="text-lg font-black text-gray-900 group-hover:text-[#DC143C] transition-colors tracking-tight">
               {project.project_name}
             </h3>
             {project.shipped && (
-              <span className="bg-emerald-500 text-white text-xs font-semibold px-2.5 py-1 rounded-full" aria-label="Project shipped">
+              <span className="bg-gradient-to-r from-emerald-500 to-green-600 text-white text-xs font-bold px-2 py-1 rounded-full shadow-md" aria-label="Project shipped">
                 Shipped
               </span>
             )}
           </div>
-          <p className="text-gray-600 text-sm font-medium">
+          <p className="text-gray-700 text-sm font-bold bg-[#FFD700]/20 inline-block px-2 py-1 rounded">
             {project.hackatime_total_hours.toFixed(1)} hours logged
           </p>
         </div>
         
-        {/* Card bottom corner pip */}
-        <div className={`absolute bottom-2 right-2 ${suitColor} font-bold text-sm bg-white/90 backdrop-blur-sm px-2 py-1 rounded rotate-180`}>
+        <div className={`absolute bottom-2 right-2 ${suitColor} font-black text-xl bg-white/95 backdrop-blur-md px-2 py-1 rounded-lg shadow-lg rotate-180`}>
           {suit}
         </div>
       </div>

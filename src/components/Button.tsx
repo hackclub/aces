@@ -11,20 +11,20 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const baseClasses =
-  "text-xl font-medium rounded-lg text-sm px-5 py-2.5 text-center no-underline transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2";
+  "text-lg font-bold tracking-wide rounded-xl px-6 py-3 text-center no-underline transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-offset-2";
 
 const colorClassMap = {
   rose: {
-    normal: "text-white bg-rose-700 hover:bg-rose-800 focus:ring-rose-500 shadow-md hover:shadow-lg",
-    invert: "text-rose-700 bg-white hover:bg-rose-50 focus:ring-rose-500 border-2 border-rose-700",
+    normal: "text-white bg-gradient-to-br from-[#DC143C] to-[#8B0000] hover:from-[#FF1744] hover:to-[#DC143C] focus:ring-red-500 shadow-lg hover:shadow-xl",
+    invert: "text-[#DC143C] bg-white hover:bg-[#DC143C] hover:text-white focus:ring-red-500 border-3 border-[#DC143C]",
   },
   red: {
-    normal: "text-white bg-red-500 hover:bg-red-600 focus:ring-red-500 shadow-md hover:shadow-lg",
-    invert: "text-red-500 bg-white hover:bg-red-50 focus:ring-red-500 border-2 border-red-500",
+    normal: "text-white bg-gradient-to-br from-red-600 to-red-800 hover:from-red-500 hover:to-red-700 focus:ring-red-500 shadow-lg hover:shadow-xl",
+    invert: "text-red-600 bg-white hover:bg-red-600 hover:text-white focus:ring-red-500 border-3 border-red-600",
   },
   white: {
-    normal: "text-black bg-white hover:bg-gray-100 focus:ring-gray-400 shadow-md hover:shadow-lg",
-    invert: "text-white bg-black hover:bg-gray-900 focus:ring-gray-600 border-2 border-white",
+    normal: "text-gray-900 bg-white hover:bg-gray-50 focus:ring-gray-400 shadow-lg hover:shadow-xl",
+    invert: "text-white bg-gray-900 hover:bg-black focus:ring-gray-600 border-3 border-white",
   },
 };
 
@@ -37,7 +37,7 @@ export default function Button({
   ...rest
 }: ButtonProps) {
   const variant = invert ? "invert" : "normal";
-  const disabledClasses = disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer";
+  const disabledClasses = disabled ? "cursor-not-allowed opacity-40" : "cursor-pointer";
   const colorClasses = colorClassMap[color][variant];
 
   const classes = clsx(baseClasses, colorClasses, disabledClasses);

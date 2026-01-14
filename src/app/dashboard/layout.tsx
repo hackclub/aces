@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { cookies, headers } from "next/headers";
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import DashNav from "@/components/dashboard/DashNav";
 import UserProvider from "@/app/dashboard/UserProvider";
@@ -45,11 +45,6 @@ export default async function DashboardLayout({ children }: { children: ReactNod
   if (!user) {
     redirect("/login");
   }
-
-  const headersList = await headers()
-  const pathname = headersList.get('x-pathname')
-    ?? headersList.get('x-invoke-path')
-    ?? ''
 
   return (
     <div className="h-screen w-screen flex flex-col bg-[url(/bg_new.png)] bg-cover relative">
