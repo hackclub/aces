@@ -12,6 +12,7 @@ export type Project = {
   repo: string;
   demo_url: string;
   preview_image: string;
+  description?: string;
   shipped: boolean;
 };
 

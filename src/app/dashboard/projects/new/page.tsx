@@ -19,6 +19,7 @@ export default function NewProjectPage() {
       repo: formData.get("repo") || null,
       demo_url: formData.get("demo_url") || null,
       preview_image: formData.get("preview_image") || null,
+      description: formData.get("description") || null,
     };
 
     try {
@@ -99,6 +100,22 @@ export default function NewProjectPage() {
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500"
             placeholder="https://example.com/image.png"
           />
+        </div>
+
+        <div>
+          <label htmlFor="description" className="block text-sm font-medium mb-1">
+            Description
+          </label>
+          <textarea
+            id="description"
+            name="description"
+            minLength={50}
+            maxLength={500}
+            rows={4}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500 resize-none"
+            placeholder="Describe your project... (50-500 characters)"
+          />
+          <p className="text-xs text-gray-500 mt-1">Optional: 50-500 characters</p>
         </div>
 
         {error && (

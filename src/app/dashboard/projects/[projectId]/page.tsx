@@ -10,9 +10,10 @@ type Project = {
   hackatime_projects: string[];
   hackatime_total_hours: number;
   last_updated: string;
-  repo: string | null;
-  demo_url: string | null;
-  preview_image: string | null;
+  repo: string;
+  demo_url: string;
+  preview_image: string;
+  description?: string;
   shipped: boolean;
 };
 

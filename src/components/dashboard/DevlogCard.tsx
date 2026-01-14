@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export type Devlog = {
   id: number;
   user_id: number;
@@ -89,12 +87,10 @@ export default function DevlogCard({ devlog }: { devlog: Devlog }) {
         
         {devlog.media_url && (
           <div className="relative rounded-xl overflow-hidden border-2 border-gray-200 shadow-md bg-gray-50 flex items-center justify-center max-w-md" style={{ maxHeight: '300px' }}>
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src={devlog.media_url}
               alt="Cash Out media"
-              width={400}
-              height={300}
-              sizes="(max-width: 768px) 100vw, 400px"
               className="max-w-full max-h-[300px] object-contain"
             />
           </div>

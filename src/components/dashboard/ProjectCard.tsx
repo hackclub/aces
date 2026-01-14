@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { Project } from "@/app/dashboard/page";
@@ -20,12 +19,10 @@ export default function ProjectCard({ project }: { project: Project }) {
           {suit}
         </div>
         
-        <Image
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           src={imageSrc}
           alt={project.project_name}
-          width={400}
-          height={200}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="w-full h-40 object-cover"
         />
         

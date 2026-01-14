@@ -13,6 +13,7 @@ type ProjectData = {
   repo: string;
   demo_url: string;
   preview_image: string;
+  description: string;
   hackatime_projects: string[];
 };
 
@@ -168,6 +169,23 @@ export default function EditProject({
               className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-rose-500 transition-colors font-medium"
             />
             <p className="mt-2 text-xs text-gray-600">Must be hosted on Hack Club CDN</p>
+          </div>
+
+          <div>
+            <label htmlFor="description" className="block text-sm font-bold text-gray-700 mb-2">
+              Description
+            </label>
+            <textarea
+              id="description"
+              value={formData.description}
+              onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+              minLength={50}
+              maxLength={500}
+              rows={4}
+              placeholder="Describe your project..."
+              className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-rose-500 transition-colors font-medium resize-none"
+            />
+            <p className="mt-2 text-xs text-gray-600">Optional: 50-500 characters</p>
           </div>
 
           <div>
