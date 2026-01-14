@@ -31,7 +31,7 @@ export default function CardsProgressBar() {
     <div className="mb-10 relative">
       <div className="flex items-baseline justify-between mb-3">
         <div className="flex items-baseline gap-2">
-          <span className="text-6xl font-black tracking-tighter bg-gradient-to-br from-[#FFD700] via-[#DC143C] to-[#590019] bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(220,20,60,0.3)] font-[family-name:var(--font-righteous)]">
+          <span className="text-6xl font-black tracking-tighter text-[#DC143C] drop-shadow-[0_2px_8px_rgba(220,20,60,0.3)] font-[family-name:var(--font-righteous)]">
             {cards}
           </span>
           <span className="text-2xl font-black text-gray-300">/</span>

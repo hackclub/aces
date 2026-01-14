@@ -11,7 +11,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const baseClasses =
-  "text-lg font-bold tracking-wide rounded-xl px-6 py-3 text-center no-underline transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-offset-2";
+  "text-lg font-bold tracking-wide rounded-xl px-6 py-3 text-center no-underline transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-offset-2 h-14 flex items-center justify-center";
 
 const colorClassMap = {
   rose: {
