@@ -18,34 +18,37 @@ export type Project = {
 async function getProjects(): Promise<Project[]> {
   const cookieStore = await cookies();
   const sessionId = cookieStore.get("sessionId")?.value;
-  console.log(sessionId);
 
   if (!sessionId) {
     return [];
   }
 
-  const req = new Request(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/projects`,
-    {
-      method: "GET",
-      headers: {
-        Cookie: `sessionId=${sessionId}`,
-      },
-      cache: "no-store",
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/projects`,
+      {
+        method: "GET",
+        headers: {
+          Cookie: `sessionId=${sessionId}`,
+        },
+        cache: "no-store",
+      }
+    );
+
+    if (res.status === 401) {
+      return [];
     }
-  )
 
-  console.log(req)
+    if (!res.ok) {
+      console.error("Failed to fetch projects", { status: res.status });
+      return [];
+    }
 
-  const res = await fetch(req);
-
-  console.log(res)
-
-  if (!res.ok) {
+    return await res.json();
+  } catch (err) {
+    console.error("Error fetching projects", err);
     return [];
   }
-
-  return res.json();
 }
 
 export default async function Page() {

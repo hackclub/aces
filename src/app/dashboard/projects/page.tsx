@@ -22,22 +22,32 @@ async function getAllProjects(): Promise<Project[]> {
     return [];
   }
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/projects/all`,
-    {
-      method: "GET",
-      headers: {
-        Cookie: `sessionId=${sessionId}`,
-      },
-      cache: "no-store",
-    }
-  );
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/projects/all`,
+      {
+        method: "GET",
+        headers: {
+          Cookie: `sessionId=${sessionId}`,
+        },
+        cache: "no-store",
+      }
+    );
 
-  if (!res.ok) {
+    if (res.status === 401) {
+      return [];
+    }
+
+    if (!res.ok) {
+      console.error("Failed to fetch all projects", { status: res.status });
+      return [];
+    }
+
+    return await res.json();
+  } catch (err) {
+    console.error("Error fetching all projects", err);
     return [];
   }
-
-  return res.json();
 }
 
 export default async function ExplorePage() {

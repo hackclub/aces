@@ -13,25 +13,37 @@ export async function PATCH(
     return NextResponse.json({ detail: "Unauthorized" }, { status: 401 });
   }
 
-  const body = await req.json();
-
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/projects/${projectId}`,
-    {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Cookie: `sessionId=${sessionId}`,
-      },
-      body: JSON.stringify(body),
-    }
-  );
-
-  const data = await res.json();
-
-  if (!res.ok) {
-    return NextResponse.json(data, { status: res.status });
+  let body: unknown;
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  return NextResponse.json(data);
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/projects/${projectId}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Cookie: `sessionId=${sessionId}`,
+        },
+        body: JSON.stringify(body),
+      }
+    );
+
+    const text = await res.text();
+    let data: unknown = null;
+    try {
+      data = text ? JSON.parse(text) : null;
+    } catch {
+      console.error("Failed to parse backend response as JSON");
+    }
+
+    return NextResponse.json(data, { status: res.status });
+  } catch (err) {
+    console.error("Error proxying project update", err);
+    return NextResponse.json({ error: "Upstream error" }, { status: 502 });
+  }
 }

@@ -13,21 +13,28 @@ export async function POST(
     return NextResponse.json({ detail: "Unauthorized" }, { status: 401 });
   }
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/v1/projects/${projectId}/ship`,
-    {
-      method: "POST",
-      headers: {
-        Cookie: `sessionId=${sessionId}`,
-      },
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/projects/${projectId}/ship`,
+      {
+        method: "POST",
+        headers: {
+          Cookie: `sessionId=${sessionId}`,
+        },
+      }
+    );
+
+    const text = await res.text();
+    let data: unknown = null;
+    try {
+      data = text ? JSON.parse(text) : null;
+    } catch {
+      console.error("Failed to parse backend response as JSON");
     }
-  );
 
-  if (!res.ok) {
-    const error = await res.json();
-    return NextResponse.json(error, { status: res.status });
+    return NextResponse.json(data, { status: res.status });
+  } catch (err) {
+    console.error("Error proxying project ship", err);
+    return NextResponse.json({ error: "Upstream error" }, { status: 502 });
   }
-
-  const data = await res.json();
-  return NextResponse.json(data);
 }

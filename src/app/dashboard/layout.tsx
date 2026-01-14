@@ -21,22 +21,28 @@ async function getUser(): Promise<User | null> {
     return null;
   }
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/me`, {
-    headers: {
-      Cookie: `sessionId=${sessionId}`,
-    },
-    cache: "no-store",
-  });
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/me`, {
+      headers: {
+        Cookie: `sessionId=${sessionId}`,
+      },
+      cache: "no-store",
+    });
 
-  if (res.status === 401) {
+    if (res.status === 401) {
+      return null;
+    }
+
+    if (!res.ok) {
+      console.error("Failed to fetch user", { status: res.status });
+      return null;
+    }
+
+    return await res.json();
+  } catch (err) {
+    console.error("Error fetching user", err);
     return null;
   }
-
-  if (!res.ok) {
-    return null;
-  }
-
-  return res.json();
 }
 
 export default async function DashboardLayout({ children }: { children: ReactNode }) {

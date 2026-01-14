@@ -7,18 +7,34 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const data = await req.json();
+  let data: unknown;
+  try {
+    data = await req.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
+  }
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/devlogs/`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Cookie: `sessionId=${sessionId}`,
-    },
-    body: JSON.stringify(data),
-  });
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/devlogs/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Cookie: `sessionId=${sessionId}`,
+      },
+      body: JSON.stringify(data),
+    });
 
-  const responseData = await res.json().catch(() => null);
+    const text = await res.text();
+    let json: unknown = null;
+    try {
+      json = text ? JSON.parse(text) : null;
+    } catch {
+      console.error("Failed to parse backend response as JSON");
+    }
 
-  return NextResponse.json(responseData, { status: res.status });
+    return NextResponse.json(json, { status: res.status });
+  } catch (err) {
+    console.error("Error proxying devlog creation", err);
+    return NextResponse.json({ error: "Upstream error" }, { status: 502 });
+  }
 }
