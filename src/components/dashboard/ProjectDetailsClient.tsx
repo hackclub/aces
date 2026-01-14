@@ -10,10 +10,10 @@ type Project = {
   hackatime_projects: string[];
   hackatime_total_hours: number;
   last_updated: string;
-  repo: string | null;
-  demo_url: string | null;
-  preview_image: string | null;
-  description: string | null;
+  repo: string;
+  demo_url: string;
+  preview_image: string;
+  description?: string;
   shipped: boolean;
 };
 
@@ -61,28 +61,30 @@ export default function ProjectDetailsClient({ project }: { project: Project }) 
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-3 mt-6">
-            {project.repo && (
-              <a
-                href={project.repo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-5 py-2.5 bg-gray-100 hover:bg-gray-200 rounded-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 shadow-sm hover:shadow-md"
-              >
-                View Repo
-              </a>
-            )}
-            {project.demo_url && (
-              <a
-                href={project.demo_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-5 py-2.5 bg-rose-700 hover:bg-rose-800 text-white rounded-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 shadow-md hover:shadow-lg"
-              >
-                View Demo
-              </a>
-            )}
-          </div>
+          {(project.repo || project.demo_url) && (
+            <div className="flex flex-wrap gap-3 mt-6">
+              {project.repo && (
+                <a
+                  href={project.repo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2.5 bg-gray-100 hover:bg-gray-200 rounded-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 shadow-sm hover:shadow-md"
+                >
+                  View Repo
+                </a>
+              )}
+              {project.demo_url && (
+                <a
+                  href={project.demo_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2.5 bg-rose-700 hover:bg-rose-800 text-white rounded-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 shadow-md hover:shadow-lg"
+                >
+                  View Demo
+                </a>
+              )}
+            </div>
+          )}
           
           <div className="mt-6">
             <a
@@ -118,9 +120,9 @@ export default function ProjectDetailsClient({ project }: { project: Project }) 
           projectId={project.project_id}
           initialData={{
             project_name: project.project_name,
-            repo: project.repo || "",
-            demo_url: project.demo_url || "",
-            preview_image: project.preview_image || "",
+            repo: project.repo,
+            demo_url: project.demo_url,
+            preview_image: project.preview_image,
             description: project.description || "",
             hackatime_projects: project.hackatime_projects,
           }}
