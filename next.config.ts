@@ -3,18 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'hc-cdn.hel1.your-objectstorage.com',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'ui-avatars.com',
-        pathname: '/api/**',
-      },
-    ],
+    domains: ['hc-cdn.hel1.your-objectstorage.com', 'ui-avatars.com'],
   },
   async redirects() {
     return [
