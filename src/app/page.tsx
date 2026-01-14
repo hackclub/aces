@@ -1,15 +1,12 @@
+"use client"
 import Image from "next/image";
 import Button from "@/components/Button";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import ForbiddenPopup from "@/components/ForbiddenPopup";
-import RSVP from "@/components/RSVP";
+import { useState } from "react";
+import Flag from "@/components/Flag";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export default function Home() {
-  const router = useRouter();
-  const [is404, setIs404] = useState<boolean>(false);
-  const [isForbidden, setIsForbidden] = useState<boolean>(false);
-  const [ref, setRef] = useState<string | null>(null);
   const [isCardOpen, setIsCardOpen] = useState<boolean>(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
@@ -17,10 +14,6 @@ export default function Home() {
     {
       sum: "NO AI ART",
       det: "All non-programming assets must be created by humans",
-    },
-    {
-      sum: "40 hours logged",
-      det: "You must log at least 40 hours of work total covering both art and code.",
     },
     {
       sum: "≤ 30% AI code",
@@ -35,85 +28,64 @@ export default function Home() {
       det: "Your game must be public on GitHub (or another Git server). Include a clear license, I recommend the WTFPL!",
     },
     {
-      sum: "Shipped to itch.io or Steam",
+      sum: "Published Game",
       det: "The built game must be published on itch.io or Steam!",
     },
   ];
 
   const faqItems = [
     {
-      q: "Do we need Hackatime? Can we track Art?",
-      a: "Yes, you need Hackatime. We are currently discussing the best solution to offer time tracking for art, but it will be allowed.",
+      q: "How do I earn cards?",
+      a: "Earn cards by completing tasks and purchases through our shop system. Log your hours with Hackatime to track progress and earn rewards.",
+    },
+    {
+      q: "How do I get a ticket to The Deck?",
+      a: "Earn enough cards through the shop system to purchase your ticket. Cards can be earned by working on your game, completing challenges, and other activities.",
     },
     { q: "When/Where is the IRL event?", a: "March 13-15 in DC." },
     {
-      q: "Can I still make a game if I cannot go IRL?",
-      a: "Yes. We will have a shop for other things for you to spend your hours on as well.",
+      q: "Can I still make a game if I cannot go?",
+      a: "Yes! You can spend your cards in our shop on other prizes and rewards even if you can't attend the event.",
     },
     {
       q: "How do travel stipends work?",
-      a: "For every hour not used towards the 40hr event invitation, you will gain currency. The currency will be spendable for flight stipends at a rate of $10/hr, among other prizes.",
+      a: "Cards can be spent on flight stipends and other prizes through our shop at various rates.",
     },
     { q: "Do projects need to be open source?", a: "Yes." },
     {
       q: "Can you work in teams?",
-      a: "Yes, but each person must complete the 40hr requirement separately. For example, a team of two needs 80 hours total (40 for each person).",
+      a: "Yes, but each person must earn their ticket separately through the shop system.",
     },
   ];
 
-  useEffect(() => {
-    if (!router.isReady) return;
-    const is404 = "404" in router.query;
-    const isForbidden = "forbidden" in router.query;
-    const rawRef = router.query["ref"];
-
-    let currRef = rawRef ? (rawRef as string) : null;
-
-    if (currRef && !/^\d+$/.test(currRef)) {
-      currRef = null;
-    }
-
-    setIs404(is404);
-    setIsForbidden(isForbidden);
-    setRef(currRef);
-  }, [router.isReady, router.query]);
-
-  return (
+  return <>
+    <Flag />
+    <Navbar />
     <main>
       <div className="container h-screen flex items-center md:p-0 p-5">
-        <ForbiddenPopup isForbidden={isForbidden} isNotFound={is404} />
         <h1 className="sr-only">Ace Homepage</h1>
         <div className="w-full text-center self-center">
           <Image
-            src={"/aces_logo.svg"}
+            src={"/aces_new.png"}
             alt="Aces Logo"
-            width={0}
-            height={0}
+            width={1089}
+            height={644}
             style={{ width: "50%", height: "50%" }}
             className="mb-4 mx-auto"
           />
-          <p className="md:text-3xl text-lg text-white font-medium mb-5">
-            Build your own digital <strong>board/card game</strong>, get a{" "}
-            <strong>grant</strong> to make it real, and head to DC for{" "}
-            <strong>AwesomeCon</strong> to showcase it, then stay for an
-            in-person <strong>hackathon!</strong>
+          <p className="md:text-3xl text-lg text-white font-medium mb-6 leading-relaxed">
+            Build your own digital <strong className="font-bold">board/card game</strong>, earn{" "}
+            <strong className="font-bold">cards through our shop</strong> to get your{" "}
+            <strong className="font-bold">ticket to The Deck</strong> - a 48 hour hackathon in Washington DC during{" "}
+            <strong className="font-bold">AwesomeCon!</strong>
           </p>
-	        <p className="md:text-2xl text-sm text-white font-medium mb-5">
-		        Current RSVP Count: <RSVP/> / 750
-	        </p>
-
           <div className="flex justify-center gap-x-4 no-underline">
             <Button
-              href={
-                "https://forms.hackclub.com/aces-rsvp" +
-                (ref ? `?ref=${ref}` : "")
-              }
-              color={"rose"}
-            >
-              RSVP
+              href={"#learn-more"}  color={"rose"}>
+              Learn More
             </Button>
-            <Button color={"red"} invert disabled>
-              Submit
+            <Button color={"red"} invert href={"/dashboard"}>
+              Open Dashboard
             </Button>
           </div>
         </div>
@@ -154,17 +126,17 @@ export default function Home() {
                   Create a{" "}
                   <span className={"text-rose-300 font-extrabold"}>
                     {" "}
-                    virtual card/board game in 40 hours...
+                    virtual card/board game...
                   </span>
                 </li>
                 <li>
-                  Get a grant to{" "}
+                  Earn cards through{" "}
                   <span className={"text-rose-300 font-extrabold"}>
-                    make your game for real...
+                    our shop system...
                   </span>
                 </li>
                 <li>
-                  And get invited to{" "}
+                  Get your ticket to{" "}
                   <span className={"text-rose-300 font-extrabold"}>
                     The Deck
                   </span>
@@ -179,14 +151,14 @@ export default function Home() {
         id={"requirements"}
         className="container h-screen flex items-center justify-center p-5"
       >
-        <div className="w-full max-w-2xl bg-rose-800 p-6 text-white rounded-lg">
-          <h2 className="text-3xl text-white font-semibold mb-4">
+        <div className="w-full max-w-2xl bg-rose-800 p-6 text-white rounded-2xl shadow-2xl border-2 border-rose-700">
+          <h2 className="text-3xl text-white font-bold mb-5 tracking-tight">
             Requirements
           </h2>
-          <ul className="list-disc list-inside space-y-4">
+          <ul className="list-disc list-inside space-y-4 text-lg leading-relaxed">
             {reqItems.map((item, i) => (
-              <li key={i}>
-                <strong>{item.sum}</strong>: {item.det}
+              <li key={i} className="pl-2">
+                <strong className="font-bold">{item.sum}</strong>: {item.det}
               </li>
             ))}
           </ul>
@@ -196,11 +168,11 @@ export default function Home() {
         id={"faq"}
         className="container h-screen flex items-center justify-center p-5"
       >
-        <div className="w-full max-w-2xl p-6 bg-rose-800 rounded-lg text-white">
-          <h2 className="text-3xl font-semibold text-center mb-6">FAQ</h2>
-          <ul className="space-y-3">
+        <div className="w-full max-w-2xl p-6 bg-rose-800 rounded-2xl text-white shadow-2xl border-2 border-rose-700">
+          <h2 className="text-3xl font-bold text-center mb-6 tracking-tight">FAQ</h2>
+          <ul className="space-y-4">
             {faqItems.map((item, i) => (
-              <li key={i} className="border-b border-white/10 pb-3">
+              <li key={i} className="border-b border-white/20 pb-4">
                 <details open={openFaq === i} className="group">
                   <summary
                     onClick={(e) => {
@@ -209,28 +181,28 @@ export default function Home() {
                     }}
                     aria-expanded={openFaq === i}
                     aria-controls={`faq-${i}`}
-                    className="list-none w-full flex items-center justify-between text-left py-2 cursor-pointer focus:outline-none"
+                    className="list-none w-full flex items-center justify-between text-left py-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-rose-300 rounded-lg px-2"
                   >
-                    <span className="font-bold">{item.q}</span>
+                    <span className="font-bold text-lg">{item.q}</span>
                     <span
                       className={`flex flex-col gap-1 w-5 h-5 transition-transform ${
                         openFaq === i ? "rotate-90" : ""
                       }`}
                     >
-                      <span className="block h-[2px] w-full bg-white" />
-                      <span className="block h-[2px] w-full bg-white" />
-                      <span className="block h-[2px] w-full bg-white" />
+                      <span className="block h-0.5 w-full bg-white" />
+                      <span className="block h-0.5 w-full bg-white" />
+                      <span className="block h-0.5 w-full bg-white" />
                     </span>
                   </summary>
                   <div
                     id={`faq-${i}`}
-                    className={`ml-6 mt-2 text-sm transition-all overflow-hidden ${
+                    className={`ml-6 mt-3 transition-all overflow-hidden ${
                       openFaq === i
                         ? "max-h-96 opacity-100"
                         : "max-h-0 opacity-0"
                     }`}
                   >
-                    <p className={"text-lg"}>{item.a}</p>
+                    <p className={"text-lg leading-relaxed"}>{item.a}</p>
                   </div>
                 </details>
               </li>
@@ -239,5 +211,6 @@ export default function Home() {
         </div>
       </div>
     </main>
-  );
+    <Footer />
+  </>
 }
