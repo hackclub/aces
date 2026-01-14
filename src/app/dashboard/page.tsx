@@ -25,7 +25,7 @@ async function getProjects(): Promise<Project[]> {
 
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/projects`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/projects/`,
       {
         method: "GET",
         headers: {
