@@ -126,7 +126,7 @@ export default function ProjectDetailsClient({ project }: { project: Project }) 
             description: project.description || "",
             hackatime_projects: project.hackatime_projects,
           }}
-          onCancel={() => setIsEditing(false)}
+          onCancelAction={() => setIsEditing(false)}
         />
       )}
     </>
