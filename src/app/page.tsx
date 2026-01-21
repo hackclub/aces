@@ -74,8 +74,9 @@ export default function Home() {
             className="mb-4 mx-auto"
           />
           <p className="md:text-3xl text-lg text-white font-medium mb-6 leading-relaxed">
-            Build your own digital <strong className="font-bold">board/card game</strong>, earn{" "}
-            <strong className="font-bold">cards through our shop</strong> to get your{" "}
+            Since <strong className="font-bold">December 21st</strong>, teens have been building digital{" "}
+            <strong className="font-bold">board/card games</strong>, earning{" "}
+            <strong className="font-bold">cards through our shop</strong> to get their{" "}
             <strong className="font-bold">ticket to The Deck</strong> - a 48 hour hackathon in Washington DC during{" "}
             <strong className="font-bold">AwesomeCon!</strong>
           </p>

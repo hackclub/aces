@@ -27,7 +27,7 @@ export async function GET() {
 
   // Fetch all Hackatime projects for this user
   const hackatimeRes = await fetch(
-    `https://hackatime.hackclub.com/api/v1/users/${hackatimeId}/stats?features=projects&start_date=2025-12-01T00:00:00Z`,
+    `https://hackatime.hackclub.com/api/v1/users/${hackatimeId}/stats?features=projects&start_date=2025-12-21T00:00:00Z`,
     { cache: "no-store" }
   );
 
