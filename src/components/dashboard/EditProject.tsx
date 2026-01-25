@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 type HackatimeProject = {
@@ -20,11 +20,11 @@ type ProjectData = {
 export default function EditProject({
   projectId,
   initialData,
-  onCancel,
+  onCancelAction,
 }: {
   projectId: number;
   initialData: ProjectData;
-  onCancel: () => void;
+  onCancelAction: () => void;
 }) {
   const router = useRouter();
   const [formData, setFormData] = useState(initialData);
@@ -73,7 +73,7 @@ export default function EditProject({
       }
 
       router.refresh();
-      onCancel();
+      onCancelAction();
     } catch (err) {
       setError(err instanceof Error ? err.message : "An error occurred");
     } finally {
@@ -97,7 +97,7 @@ export default function EditProject({
           <h2 className="text-2xl font-bold text-gray-900">Edit Project</h2>
           <button
             type="button"
-            onClick={onCancel}
+            onClick={onCancelAction}
             className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-gray-400"
             aria-label="Close"
           >
@@ -228,7 +228,7 @@ export default function EditProject({
           <div className="flex gap-3 pt-4 border-t-2 border-gray-100">
             <button
               type="button"
-              onClick={onCancel}
+              onClick={onCancelAction}
               className="flex-1 px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-lg font-bold hover:bg-gray-50 transition-all focus:outline-none focus:ring-2 focus:ring-gray-400"
               disabled={loading}
             >

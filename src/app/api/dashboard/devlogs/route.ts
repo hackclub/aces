@@ -7,13 +7,15 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  let data: unknown;
+  let data: { project_id: string; content: string; media_url?: string; description?: string | null };
   try {
     data = await req.json();
   } catch {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
-
+  if (data.description === "") {
+    data.description = null;
+  }
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/devlogs/`, {
       method: "POST",

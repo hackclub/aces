@@ -81,7 +81,7 @@ export default async function ProjectPage({
 
   return (
     <div className="max-w-4xl mx-auto">
-      <ProjectDetailsClient project={project} />
+      <ProjectDetailsClient project={project} devlogCount={devlogs.length} />
 
       <div>
         <div className="flex items-center gap-3 mb-6">
