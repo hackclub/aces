@@ -9,9 +9,12 @@ export default function CardsProgressBar() {
   useEffect(() => {
     async function fetchCards() {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/me`, {
-          credentials: "include",
-        });
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/me`,
+          {
+            credentials: "include",
+          },
+        );
         if (res.ok) {
           const data = await res.json();
           setCards(data.cards);

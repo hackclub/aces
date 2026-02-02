@@ -3,8 +3,7 @@ import React from "react";
 
 const description =
   "Build a virtual card/board game, get a grant to build it and be flown out to Washington DC!";
-const imgUrl =
-  "/aces_new_png";
+const imgUrl = "/aces_new_png";
 
 const Meta = () => (
   <>

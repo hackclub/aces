@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const cacheForEmergencies: number | undefined = undefined
+const cacheForEmergencies: number | undefined = undefined;
 
 export async function GET() {
   try {
@@ -10,7 +10,7 @@ export async function GET() {
         headers: {
           Authorization: `Bearer ${process.env.RSVP_AIRTABLE_API_KEY}`,
         },
-      }
+      },
     );
 
     const data = await res.json();
@@ -19,6 +19,9 @@ export async function GET() {
 
     return NextResponse.json({ count });
   } catch {
-    return NextResponse.json({ count: cacheForEmergencies, error: "Failed to fetch" }, { status: 500 });
+    return NextResponse.json(
+      { count: cacheForEmergencies, error: "Failed to fetch" },
+      { status: 500 },
+    );
   }
 }

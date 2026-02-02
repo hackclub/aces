@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState, Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 function ShopRedirect() {
   const searchParams = useSearchParams();
@@ -12,7 +12,9 @@ function ShopRedirect() {
 
   useEffect(() => {
     if (!item) {
-      setError("Missing item parameter. Please specify what you want to purchase.");
+      setError(
+        "Missing item parameter. Please specify what you want to purchase.",
+      );
       setLoading(false);
       return;
     }
@@ -29,7 +31,7 @@ function ShopRedirect() {
         }
 
         const { formUrl } = await res.json();
-        const redirectUrl = `${formUrl}?item=${encodeURIComponent(item!)}`;
+        const redirectUrl = `${formUrl}?item=${encodeURIComponent(item)}`;
         window.location.href = redirectUrl;
       } catch (err) {
         console.error("Error fetching form URL", err);

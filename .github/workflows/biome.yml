@@ -1,16 +1,15 @@
-name: tsc
+name: biome
 on:
   - push
   - pull_request
 
 jobs:
   lint:
-    name: Lint
+    name: Lint & Format
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-      - run: npm install -g yarn # this is necessary for act, also just a good failsafe
+      - run: npm install -g yarn
       - run: yarn install
-      - run: yarn lint
-      - run: yarn tsc --noEmit
+      - run: yarn biome:check

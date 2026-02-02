@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import type React from "react";
+import { useState } from "react";
 
 export default function CreateDevlog({ projectId }: { projectId: number }) {
   const router = useRouter();
@@ -45,13 +46,25 @@ export default function CreateDevlog({ projectId }: { projectId: number }) {
   if (!open) {
     return (
       <button
+        type="button"
         onClick={() => setOpen(true)}
         className="group w-full py-5 border-2 border-dashed border-rose-300 hover:border-rose-500 rounded-xl text-rose-600 hover:text-rose-700 transition-all duration-200 font-semibold bg-gradient-to-br from-rose-50/50 to-purple-50/50 hover:from-rose-100/50 hover:to-purple-100/50 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2"
         aria-label="Submit new cash out"
       >
         <span className="inline-flex items-center gap-2 text-lg">
-          <svg className="w-6 h-6 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+          <svg
+            className="w-6 h-6 transition-transform group-hover:scale-110"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+            />
           </svg>
           Submit Cash Out
         </span>
@@ -61,10 +74,15 @@ export default function CreateDevlog({ projectId }: { projectId: number }) {
 
   return (
     <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-xl border-2 border-gray-200 p-8">
-      <h3 className="text-2xl font-bold text-gray-900 mb-6 tracking-tight">Submit Cash Out</h3>
+      <h3 className="text-2xl font-bold text-gray-900 mb-6 tracking-tight">
+        Submit Cash Out
+      </h3>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label htmlFor="content" className="block text-sm font-semibold text-gray-700 mb-2">
+          <label
+            htmlFor="content"
+            className="block text-sm font-semibold text-gray-700 mb-2"
+          >
             What did you work on?
             <span className="text-rose-600 ml-1">*</span>
           </label>
@@ -80,7 +98,10 @@ export default function CreateDevlog({ projectId }: { projectId: number }) {
         </div>
 
         <div>
-          <label htmlFor="media_url" className="block text-sm font-semibold text-gray-700 mb-2">
+          <label
+            htmlFor="media_url"
+            className="block text-sm font-semibold text-gray-700 mb-2"
+          >
             Media URL (screenshot/demo)
             <span className="text-rose-600 ml-1">*</span>
           </label>
@@ -92,7 +113,9 @@ export default function CreateDevlog({ projectId }: { projectId: number }) {
             className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent transition-all"
             placeholder="https://hc-cdn.hel1.your-objectstorage.com/..."
           />
-          <p className="mt-2 text-xs text-gray-500">Must be hosted on Hack Club CDN</p>
+          <p className="mt-2 text-xs text-gray-500">
+            Must be hosted on Hack Club CDN
+          </p>
         </div>
 
         {error && (

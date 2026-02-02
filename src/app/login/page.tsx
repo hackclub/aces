@@ -39,6 +39,7 @@ export default function LoginPage() {
           </div>
         )}
         <button
+          type="button"
           className="mt-4 px-6 py-4 bg-gradient-to-br from-[#DC143C] to-[#8B0000] text-white rounded-2xl hover:from-[#FF1744] hover:to-[#DC143C] w-full font-black text-lg tracking-wide transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-[#FFD700] focus:ring-offset-2 shadow-lg hover:shadow-xl"
           onClick={handleLogin}
           aria-label="Login with Hack Club Account"

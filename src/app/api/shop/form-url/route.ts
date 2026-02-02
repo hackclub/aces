@@ -11,7 +11,7 @@ export async function GET() {
   if (!formUrl) {
     return NextResponse.json(
       { error: "Shop form URL not configured" },
-      { status: 503 }
+      { status: 503 },
     );
   }
 

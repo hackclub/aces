@@ -1,6 +1,6 @@
+import ProjectCard from "@/components/dashboard/ProjectCard";
 import { cookies } from "next/headers";
 import Link from "next/link";
-import ProjectCard from "@/components/dashboard/ProjectCard";
 
 export type Project = {
   project_id: number;
@@ -31,7 +31,7 @@ async function getAllProjects(): Promise<Project[]> {
           Cookie: `sessionId=${sessionId}`,
         },
         cache: "no-store",
-      }
+      },
     );
 
     if (res.status === 401) {
@@ -65,10 +65,12 @@ export default async function ExplorePage() {
       <h1 className="text-4xl font-bold mb-8 text-gray-900 tracking-tight">
         Explore Projects
       </h1>
-      
+
       {projects.length === 0 ? (
         <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl border-2 border-dashed border-gray-300 p-12 text-center">
-          <p className="text-gray-700 font-semibold text-lg">No projects available yet</p>
+          <p className="text-gray-700 font-semibold text-lg">
+            No projects available yet
+          </p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

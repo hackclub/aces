@@ -1,9 +1,9 @@
 import { cookies } from "next/headers";
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: Promise<{ projectId: string }> }
+  { params }: { params: Promise<{ projectId: string }> },
 ) {
   const { projectId } = await params;
   const cookieStore = await cookies();
@@ -30,7 +30,7 @@ export async function PATCH(
           Cookie: `sessionId=${sessionId}`,
         },
         body: JSON.stringify(body),
-      }
+      },
     );
 
     const text = await res.text();

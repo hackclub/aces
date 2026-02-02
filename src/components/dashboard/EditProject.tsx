@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import type React from "react";
+import { useEffect, useState } from "react";
 
 type HackatimeProject = {
   name: string;
@@ -30,20 +31,22 @@ export default function EditProject({
   const [formData, setFormData] = useState(initialData);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [hackatimeProjects, setHackatimeProjects] = useState<HackatimeProject[]>([]);
+  const [hackatimeProjects, setHackatimeProjects] = useState<
+    HackatimeProject[]
+  >([]);
   const [loadingHackatime, setLoadingHackatime] = useState(true);
 
   useEffect(() => {
     async function fetchHackatimeProjects() {
       try {
-        const res = await fetch(`/api/hackatime/projects`);
+        const res = await fetch("/api/hackatime/projects");
         if (res.ok) {
           const data = await res.json();
           setHackatimeProjects(
             Object.entries(data).map(([name, seconds]) => ({
               name,
               hours: ((seconds as number) || 0) / 3600,
-            }))
+            })),
           );
         }
       } catch (err) {
@@ -101,8 +104,19 @@ export default function EditProject({
             className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-gray-400"
             aria-label="Close"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           </button>
         </div>
@@ -115,90 +129,121 @@ export default function EditProject({
           )}
 
           <div>
-            <label htmlFor="project_name" className="block text-sm font-bold text-gray-700 mb-2">
+            <label
+              htmlFor="project_name"
+              className="block text-sm font-bold text-gray-700 mb-2"
+            >
               Project Name
             </label>
             <input
               type="text"
               id="project_name"
               value={formData.project_name}
-              onChange={(e) => setFormData({ ...formData, project_name: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, project_name: e.target.value })
+              }
               className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-rose-500 transition-colors font-medium"
               required
             />
           </div>
 
           <div>
-            <label htmlFor="repo" className="block text-sm font-bold text-gray-700 mb-2">
+            <label
+              htmlFor="repo"
+              className="block text-sm font-bold text-gray-700 mb-2"
+            >
               Repository URL
             </label>
             <input
               type="url"
               id="repo"
               value={formData.repo}
-              onChange={(e) => setFormData({ ...formData, repo: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, repo: e.target.value })
+              }
               placeholder="https://github.com/..."
               className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-rose-500 transition-colors font-medium"
             />
           </div>
 
           <div>
-            <label htmlFor="demo_url" className="block text-sm font-bold text-gray-700 mb-2">
+            <label
+              htmlFor="demo_url"
+              className="block text-sm font-bold text-gray-700 mb-2"
+            >
               Demo URL
             </label>
             <input
               type="url"
               id="demo_url"
               value={formData.demo_url}
-              onChange={(e) => setFormData({ ...formData, demo_url: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, demo_url: e.target.value })
+              }
               placeholder="https://..."
               className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-rose-500 transition-colors font-medium"
             />
           </div>
 
           <div>
-            <label htmlFor="preview_image" className="block text-sm font-bold text-gray-700 mb-2">
+            <label
+              htmlFor="preview_image"
+              className="block text-sm font-bold text-gray-700 mb-2"
+            >
               Preview Image URL
             </label>
             <input
               type="url"
               id="preview_image"
               value={formData.preview_image}
-              onChange={(e) => setFormData({ ...formData, preview_image: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, preview_image: e.target.value })
+              }
               placeholder="https://hc-cdn.hel1.your-objectstorage.com/..."
               className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-rose-500 transition-colors font-medium"
             />
-            <p className="mt-2 text-xs text-gray-600">Must be hosted on Hack Club CDN</p>
+            <p className="mt-2 text-xs text-gray-600">
+              Must be hosted on Hack Club CDN
+            </p>
           </div>
 
           <div>
-            <label htmlFor="description" className="block text-sm font-bold text-gray-700 mb-2">
+            <label
+              htmlFor="description"
+              className="block text-sm font-bold text-gray-700 mb-2"
+            >
               Description
             </label>
             <textarea
               id="description"
               value={formData.description}
-              onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, description: e.target.value })
+              }
               minLength={50}
               maxLength={500}
               rows={4}
               placeholder="Describe your project..."
               className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-rose-500 transition-colors font-medium resize-none"
             />
-            <p className="mt-2 text-xs text-gray-600">Optional: 50-500 characters</p>
+            <p className="mt-2 text-xs text-gray-600">
+              Optional: 50-500 characters
+            </p>
           </div>
 
-          <div>
-            <label className="block text-sm font-bold text-gray-700 mb-3">
+          <fieldset>
+            <legend className="block text-sm font-bold text-gray-700 mb-3">
               Linked Hackatime Projects
-            </label>
+            </legend>
             {loadingHackatime ? (
               <div className="text-center py-8">
-                <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-rose-500 border-r-transparent"></div>
+                <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-rose-500 border-r-transparent" />
               </div>
             ) : hackatimeProjects.length === 0 ? (
               <div className="bg-gray-50 rounded-lg p-4 text-center">
-                <p className="text-gray-600 font-medium">No Hackatime projects available</p>
+                <p className="text-gray-600 font-medium">
+                  No Hackatime projects available
+                </p>
               </div>
             ) : (
               <div className="space-y-2 max-h-60 overflow-y-auto border-2 border-gray-200 rounded-lg p-3">
@@ -210,11 +255,15 @@ export default function EditProject({
                     <div className="flex items-center gap-3 flex-1">
                       <input
                         type="checkbox"
-                        checked={formData.hackatime_projects.includes(project.name)}
+                        checked={formData.hackatime_projects.includes(
+                          project.name,
+                        )}
                         onChange={() => toggleHackatimeProject(project.name)}
                         className="w-5 h-5 text-rose-600 border-gray-300 rounded focus:ring-rose-500"
                       />
-                      <span className="font-medium text-gray-900">{project.name}</span>
+                      <span className="font-medium text-gray-900">
+                        {project.name}
+                      </span>
                     </div>
                     <span className="text-sm text-gray-500 font-medium">
                       {project.hours.toFixed(1)}h
@@ -223,7 +272,7 @@ export default function EditProject({
                 ))}
               </div>
             )}
-          </div>
+          </fieldset>
 
           <div className="flex gap-3 pt-4 border-t-2 border-gray-100">
             <button

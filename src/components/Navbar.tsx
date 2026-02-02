@@ -7,13 +7,15 @@ export default function Navbar() {
   return (
     <nav
       className="absolute w-full z-50 bg-transparent px-6 py-6 text-white"
-      role="navigation"
       aria-label="Main navigation"
     >
       <ul className="mx-auto md:space-x-6 space-x-3 text-right font-bold">
         {!isHome && (
           <li className="inline">
-            <Link href="/" className="md:text-xl text-md transition-colors hover:text-[#FFD700]">
+            <Link
+              href="/"
+              className="md:text-xl text-md transition-colors hover:text-[#FFD700]"
+            >
               Home
             </Link>
           </li>
@@ -35,7 +37,10 @@ export default function Navbar() {
           </Link>
         </li>
         <li className="inline">
-          <Link href="/#faq" className="md:text-xl text-md transition-colors hover:text-[#FFD700]">
+          <Link
+            href="/#faq"
+            className="md:text-xl text-md transition-colors hover:text-[#FFD700]"
+          >
             FAQ
           </Link>
         </li>

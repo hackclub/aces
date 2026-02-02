@@ -1,7 +1,7 @@
+import CardsProgressBar from "@/components/dashboard/CardsProgressBar";
+import ProjectCard from "@/components/dashboard/ProjectCard";
 import { cookies } from "next/headers";
 import Link from "next/link";
-import ProjectCard from "@/components/dashboard/ProjectCard";
-import CardsProgressBar from "@/components/dashboard/CardsProgressBar";
 
 export type Project = {
   project_id: number;
@@ -33,7 +33,7 @@ async function getProjects(): Promise<Project[]> {
           Cookie: `sessionId=${sessionId}`,
         },
         cache: "no-store",
-      }
+      },
     );
 
     if (res.status === 401) {
@@ -62,15 +62,22 @@ export default async function Page() {
       </h1>
       <CardsProgressBar />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <Link 
+        <Link
           href="/dashboard/projects/new"
           className="group focus:outline-none focus:ring-4 focus:ring-[#DC143C] focus:ring-offset-2 rounded-2xl"
           aria-label="Create new project"
         >
           <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-200 bg-linear-to-br from-gray-50 via-white to-gray-100 h-full min-h-[200px] flex items-center justify-center cursor-pointer border-3 border-dashed border-gray-300 hover:border-[#DC143C]">
             <div className="text-center p-5">
-              <span className="text-5xl text-[#DC143C] group-hover:text-[#FFD700] transition-colors block mb-2" aria-hidden="true">+</span>
-              <p className="text-gray-900 font-black text-lg group-hover:text-[#DC143C] transition-colors tracking-tight">New Project</p>
+              <span
+                className="text-5xl text-[#DC143C] group-hover:text-[#FFD700] transition-colors block mb-2"
+                aria-hidden="true"
+              >
+                +
+              </span>
+              <p className="text-gray-900 font-black text-lg group-hover:text-[#DC143C] transition-colors tracking-tight">
+                New Project
+              </p>
             </div>
           </div>
         </Link>

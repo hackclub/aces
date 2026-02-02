@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   const sessionId = req.cookies.get("sessionId")?.value;
@@ -7,7 +7,12 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  let data: { project_id: string; content: string; media_url?: string; description?: string | null };
+  let data: {
+    project_id: string;
+    content: string;
+    media_url?: string;
+    description?: string | null;
+  };
   try {
     data = await req.json();
   } catch {
@@ -17,14 +22,17 @@ export async function POST(req: NextRequest) {
     data.description = null;
   }
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/devlogs/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Cookie: `sessionId=${sessionId}`,
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/v1/devlogs/`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Cookie: `sessionId=${sessionId}`,
+        },
+        body: JSON.stringify(data),
       },
-      body: JSON.stringify(data),
-    });
+    );
 
     const text = await res.text();
     let json: unknown = null;
