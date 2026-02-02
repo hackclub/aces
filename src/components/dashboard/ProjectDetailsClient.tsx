@@ -75,7 +75,7 @@ export default function ProjectDetailsClient({ project, devlogCount }: Props) {
                 {project.hackatime_total_hours.toFixed(1)} hours logged
               </p>
               {project.description && (
-                <p className="text-gray-700 mt-4 text-base leading-relaxed">
+                <p className="text-gray-700 mt-4 text-base leading-relaxed whitespace-pre-line">
                   {project.description}
                 </p>
               )}
