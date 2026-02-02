@@ -1,8 +1,6 @@
 # Aces
 This is the site for [Aces](https://aces.hackclub.com), a 48 hour hackathon run by Hack Clubbers. The idea is simple: Build a virtual board/card game, get an invite to *The Deck*, a 48 hour Hackathon taking place in DC with free tickets to AwesomeCon, a large DC Convention!
 
-If you're here to contribute to the Gallery, hold on tight!
-
  
 
 ## Development - Getting Started

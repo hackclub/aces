@@ -23,7 +23,6 @@ WORKDIR /app
 COPY --from=builder /app/package.json /app/bun.lock ./
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/next.config.ts ./
 
 # Install only production deps
 RUN bun install --production --frozen-lockfile
