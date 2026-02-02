@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import EditProject from "./EditProject";
@@ -17,8 +18,41 @@ type Project = {
   shipped: boolean;
 };
 
-export default function ProjectDetailsClient({ project }: { project: Project }) {
+type Props = {
+  project: Project;
+  devlogCount: number;
+};
+
+export default function ProjectDetailsClient({ project, devlogCount }: Props) {
+  const router = useRouter();
   const [isEditing, setIsEditing] = useState(false);
+  const [isShipping, setIsShipping] = useState(false);
+  const [shipError, setShipError] = useState<string | null>(null);
+
+  const canShip = !project.shipped && devlogCount > 0;
+
+  async function handleShip() {
+    setIsShipping(true);
+    setShipError(null);
+
+    try {
+      const res = await fetch(`/api/projects/${project.project_id}/ship`, {
+        method: "POST",
+        credentials: "include",
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.detail || data.error || "Failed to ship project");
+      }
+
+      router.refresh();
+    } catch (err) {
+      setShipError(err instanceof Error ? err.message : "Something went wrong");
+    } finally {
+      setIsShipping(false);
+    }
+  }
 
   return (
     <>
@@ -41,7 +75,7 @@ export default function ProjectDetailsClient({ project }: { project: Project }) 
                 {project.hackatime_total_hours.toFixed(1)} hours logged
               </p>
               {project.description && (
-                <p className="text-gray-700 mt-4 text-base leading-relaxed">
+                <p className="text-gray-700 mt-4 text-base leading-relaxed whitespace-pre-line">
                   {project.description}
                 </p>
               )}
@@ -52,13 +86,27 @@ export default function ProjectDetailsClient({ project }: { project: Project }) 
                   Shipped
                 </span>
               )}
+              {canShip && (
+                <button
+                  type="button"
+                  onClick={handleShip}
+                  disabled={isShipping}
+                  className="px-4 py-2 bg-rose-700 hover:bg-rose-800 text-white rounded-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isShipping ? "Shipping..." : "Ship Project"}
+                </button>
+              )}
               <button
+                type="button"
                 onClick={() => setIsEditing(true)}
                 className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 shadow-sm hover:shadow-md"
               >
                 Edit
               </button>
             </div>
+            {shipError && (
+              <p className="text-red-600 text-sm mt-2">{shipError}</p>
+            )}
           </div>
 
           {(project.repo || project.demo_url) && (
@@ -85,7 +133,7 @@ export default function ProjectDetailsClient({ project }: { project: Project }) 
               )}
             </div>
           )}
-          
+
           <div className="mt-6">
             <a
               href="/dashboard"
@@ -126,7 +174,7 @@ export default function ProjectDetailsClient({ project }: { project: Project }) 
             description: project.description || "",
             hackatime_projects: project.hackatime_projects,
           }}
-          onCancel={() => setIsEditing(false)}
+          onCancelAction={() => setIsEditing(false)}
         />
       )}
     </>

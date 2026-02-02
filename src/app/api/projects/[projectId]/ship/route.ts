@@ -1,9 +1,9 @@
-import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
+import { type NextRequest, NextResponse } from "next/server";
 
 export async function POST(
-  request: NextRequest,
-  { params }: { params: Promise<{ projectId: string }> }
+  _req: NextRequest,
+  { params }: { params: Promise<{ projectId: string }> },
 ) {
   const { projectId } = await params;
   const cookieStore = await cookies();
@@ -19,9 +19,10 @@ export async function POST(
       {
         method: "POST",
         headers: {
+          "Content-Type": "application/json",
           Cookie: `sessionId=${sessionId}`,
         },
-      }
+      },
     );
 
     const text = await res.text();
