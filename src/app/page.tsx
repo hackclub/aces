@@ -42,7 +42,7 @@ export default function Home() {
       q: "How do I get a ticket to The Deck?",
       a: "Earn enough cards through the shop system to purchase your ticket. Cards can be earned by working on your game, completing challenges, and other activities.",
     },
-    { q: "When/Where is the IRL event?", a: "March 13-15 in DC." },
+    { q: "When/Where is the IRL event?", a: "April 24-26 in DC." },
     {
       q: "Can I still make a game if I cannot go?",
       a: "Yes! You can spend your cards in our shop on other prizes and rewards even if you can't attend the event.",
